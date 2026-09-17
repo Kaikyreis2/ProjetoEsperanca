@@ -1,0 +1,231 @@
+.site-map {
+  background: linear-gradient(
+    180deg,
+    #e0eadf 0%,
+    #edf1e8 16%,
+    #f4f1e4 32%,
+    #f5f4e7 50%,
+    #f4f1e4 68%,
+    #edf1e8 84%,
+    #e0eadf 100%
+  );
+}
+
+
+
+#site-map-title em {
+  color: #5c8958;
+  font-weight: inherit;
+}
+
+.site-map__layout {
+  display: grid;
+  margin-top: clamp(2rem, 4vw, 3.25rem);
+  grid-template-columns: minmax(0, 1.25fr) minmax(300px, .93fr);
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+.map-panel {
+  position: relative;
+  min-height: 395px;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  background: #d9e9c7;
+  box-shadow: 0 15px 32px rgba(31, 62, 42, .07);
+}
+
+.map-panel__image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.map-panel__label {
+  position: absolute;
+  z-index: 2;
+  top: 1.35rem;
+  left: 1.35rem;
+  margin: 0;
+  color: #63806b;
+  font-size: .62rem;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+
+.map-marker {
+  position: absolute;
+  z-index: 3;
+  top: var(--map-y);
+  left: var(--map-x);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: .4rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+}
+
+.map-marker__icon {
+  display: grid;
+  width: 45px;
+  height: 45px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, .15);
+  border-radius: 50%;
+  background: #163f2b;
+  box-shadow: 0 5px 12px rgba(12, 52, 32, .2);
+  font-size: 1.25rem;
+  line-height: 1;
+  transition: background-color .18s ease, transform .18s ease;
+}
+
+.map-marker__name {
+  padding: .32rem .68rem;
+  border-radius: .8rem;
+  background: rgba(255, 254, 246, .9);
+  color: #365944;
+  font-family: var(--font-body, Arial, sans-serif);
+  font-size: .63rem;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 2px 7px rgba(20, 54, 33, .08);
+}
+
+.map-marker:hover .map-marker__icon,
+.map-marker.is-active .map-marker__icon {
+  background: #2d754a;
+  transform: scale(1.12);
+}
+
+.map-marker:focus-visible {
+  outline: none;
+}
+
+.map-marker:focus-visible .map-marker__icon {
+  outline: 3px solid #fff;
+  outline-offset: 4px;
+}
+
+.map-details {
+  display: flex;
+  min-height: 395px;
+  padding: clamp(1.5rem, 2.5vw, 2rem);
+  flex-direction: column;
+  border-radius: 1.5rem;
+  background: #123f2a;
+  color: #fffef7;
+}
+
+.map-details .eyebrow {
+  color: #c2ddbe;
+}
+
+.map-details h3 {
+  margin: .75rem 0 1.35rem;
+  color: #fffef7;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: clamp(1rem, 2vw, 2rem);
+  font-weight: 500;
+  letter-spacing: -.04em;
+  line-height: 1;
+}
+
+.map-details img {
+  display: block;
+  width: 100%;
+  min-height: 0;
+  flex: 1;
+  border-radius: 1.05rem;
+  object-fit: cover;
+}
+
+.map-details__description {
+  display: none;
+  margin: 1rem 0 0;
+  color: rgba(255, 255, 255, .8);
+  font-size: .85rem;
+  line-height: 1.5;
+}
+@media (max-width: 860px) {
+  .site-map__header { grid-template-columns: 1fr; gap: 1rem; }
+  .site-map__header p { margin: 0; }
+  .site-map__layout { grid-template-columns: 1fr 0.7fr; }
+  .map-panel { min-height: min(45vw, 460px); }
+  .map-details {
+  max-width: 100%;
+  max-height: 200px;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+  .map-details img { display: block; object-fit: cover; object-position: center;}
+  .map-details__description { display: block; }
+}
+
+@media (max-width: 760px) {
+  .site-map__header { grid-template-columns: 1fr; gap: 1rem; }
+  .site-map__header p { margin: 0; }
+  .site-map__layout { grid-template-columns: 1fr; }
+  .map-panel { min-height: min(70vw, 460px); }
+  .map-details { min-height: 0; }
+  .map-details img { min-height: 250px; flex: none; }
+  .map-details__description { display: block; }
+}
+
+@media (max-width: 760px) {
+  .site-map__header h2 {
+    font-size: 2.85rem;
+  }
+
+  .map-marker__icon {
+    width: 39px;
+    height: 39px;
+    font-size: 1rem;
+  }
+
+  .map-marker__name {
+    padding: 0.28rem 0.5rem;
+    font-size: 0.56rem;
+  }
+
+  .map-panel__label {
+    top: 1rem;
+    left: 1rem;
+    font-size: 0.55rem;
+  }
+
+  .map-panel {
+    min-height: min(80vw, 460px);
+  }
+
+  .map-details {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: none;
+    padding: 1rem;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .map-details img {
+    display: block;
+    width: 100%;
+    height: 20px !important;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .map-details__description {
+    display: block;
+  }
+}
+
+

@@ -1,0 +1,1354 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Recanto Verde: um espaço para eventos entre o campo, a natureza e momentos inesquecíveis."
+    />
+    <meta name="theme-color" content="#173d2c" />
+    <title>Projeto Esperança | Eventos no campo</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600;1,700&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/png" sizes="192x192" href="Firefly (1).png">
+    <link rel="stylesheet" href="/assets/css/reset.css">
+    <link rel="stylesheet" href="/assets/css/index.css" />
+    <link rel="stylesheet" href="/assets/css/comments.css">
+    <link rel="stylesheet" href="/assets/css/footer.css">
+    <link rel="stylesheet" href="/assets/css/gallery.css">
+    <link rel="stylesheet" href="/assets/css/guide-tour.css">
+    <link rel="stylesheet" href="/assets/css/hero.css">
+    <link rel="stylesheet" href="/assets/css/interactive-tour.css">
+    <link rel="stylesheet" href="/assets/css/map.css">
+    <link rel="stylesheet" href="/assets/css/navbar-float.css">
+    <link rel="stylesheet" href="/assets/css/parallax.css">
+    <link rel="stylesheet" href="/assets/css/past-events.css">
+    <link rel="stylesheet" href="/assets/css/social.css">
+    <link rel="stylesheet" href="/assets/css/whatsapp-float.css">
+  </head>
+
+  <body>
+    <header class="site-navigation" id="site-navigation">
+      <nav class="site-navigation__inner" aria-label="Navegação principal">
+        <a class="site-navigation__brand" href="#top" aria-label="Projeto Esperança - início">
+          Projeto Esperança
+        </a>
+
+        <button
+          class="site-navigation__toggle"
+          id="navigation-toggle"
+          type="button"
+          aria-label="Abrir menu de navegação"
+          aria-controls="navigation-menu"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="site-navigation__menu" id="navigation-menu">
+          <a href="#guided-tour">Tour guiado</a>
+          <a href="#gallery">Galeria</a>
+          <a href="#interactive-tour">Ambientes</a>
+          <a href="#past-events">Eventos</a>
+          <a href="#testimonials">Comentários</a>
+          <a href="#site-map">Mapa</a>
+          <a class="site-navigation__contact" href="#location">Como chegar</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="main-title">
+  <video
+    class="hero__video"
+    id="hero-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    poster=""
+    aria-hidden="true"
+  >
+    <source
+      src="/assets/video/hero/video-aereo-sitio.mp4"
+      type="video/mp4"
+    />
+  </video>
+
+  <div class="hero__overlay" aria-hidden="true"></div>
+
+  <div class="hero__content">
+    <p class="hero__eyebrow">
+      Interior
+      <span aria-hidden="true">•</span>
+      Campo
+      <span aria-hidden="true">•</span>
+      Natureza
+    </p>
+
+    <h1 id="main-title" class="hero__title">
+      Projeto Esperança
+    </h1>
+
+    <img
+      class="hero__logo"
+      src="/Firefly (2).png"
+      alt="Logo Projeto Esperança"
+      width="145"
+      height="145"
+    />
+
+    <p class="hero__description">
+      Um espaço para eventos entre o mato, o horizonte e o tempo que passa devagar.
+    </p>
+
+    <a
+      class="hero__cta"
+      href="https://wa.me/55SEUDDDSEUNUMERO?text=Ol%C3%A1%21%20Gostaria%20de%20consultar%20a%20disponibilidade%20do%20Projeto%20Esperan%C3%A7a%20para%20um%20evento."
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Consultar data pelo WhatsApp"
+    >
+      Consultar data
+    </a>
+  </div>
+
+  <a
+    class="hero__scroll-indicator"
+    href="#next-section"
+    aria-label="Ir para a próxima seção"
+  >
+    <span>Conheça o espaço</span>
+    <span class="hero__arrow" aria-hidden="true"></span>
+  </a>
+</section>
+
+      <section class="guided-tour section" id="guided-tour" aria-labelledby="tour-title">
+        <div class="section-header">
+          <p class="eyebrow">
+            <span class="eyebrow__icon" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="8.5"></circle>
+                <path d="m14.8 9.2-1.7 4.1-3.9 1.5 1.7-4.1 3.9-1.5Z"></path>
+              </svg>
+            </span>
+            Tour guiado
+          </p>
+
+          <h2 id="tour-title" class="section-title">
+            Conheça o sítio por quem vive aqui todos os dias
+          </h2>
+
+          <p class="section-description">
+            Assista à apresentação e acompanhe, ao lado, cada lugar no momento
+            exato em que ele aparece no vídeo. Clique em um card para pular
+            direto para aquele trecho.
+          </p>
+        </div>
+        <div class="tour-layout">
+          <div class="tour-video-wrap">
+            <video class="tour-video" id="tour-video" controls playsinline preload="metadata">
+              <source src="/assets/video/hero/video-aereo-sitio.mp4" type="video/mp4" />
+              Seu navegador não suporta vídeo HTML5.
+            </video>
+          </div>
+
+          <div class="tour-stops" id="tour-stops" aria-label="Lugares do tour">
+            <button class="tour-card is-active" type="button" data-time="0" aria-pressed="true">
+              <span class="tour-card__images">
+                <img src="/assets/img/lake/lake1.png" alt="Salão principal decorado" />
+                <img src="/assets/img/lake/lake1.png" alt="Estrutura do salão principal" />
+              </span>
+              <span class="tour-card__details">
+                <span class="tour-card__meta"><time datetime="PT0S">00:00</time><span>NO AR</span></span>
+                <strong>Salão Principal</strong>
+                <small><span aria-hidden="true">♧</span> Até 220 convidados</small>
+              </span>
+            </button>
+
+            <button class="tour-card" type="button" data-time="15" aria-pressed="false">
+              <span class="tour-card__images">
+                <img  alt="Piscina do sítio" />
+                <img alt="Vista do deck" />
+              </span>
+              <span class="tour-card__details">
+                <span class="tour-card__meta"><time datetime="PT15S">00:15</time></span>
+                <strong>Piscina e Deck</strong>
+                <small><span aria-hidden="true">♧</span> Até 60 pessoas</small>
+              </span>
+            </button>
+
+            <button class="tour-card" type="button" data-time="35" aria-pressed="false">
+              <span class="tour-card__images">
+                <img alt="Quarto da acomodação" />
+                <img  alt="Banheiro da acomodação" />
+              </span>
+              <span class="tour-card__details">
+                <span class="tour-card__meta"><time datetime="PT35S">00:35</time></span>
+                <strong>Acomodações</strong>
+                <small><span aria-hidden="true">♧</span> Até 40 hóspedes</small>
+              </span>
+            </button>
+
+            <button class="tour-card" type="button" data-time="55" aria-pressed="false">
+              <span class="tour-card__images">
+                <img  alt="Área da churrasqueira" />
+                <img  alt="Mesas da área de churrasqueira" />
+              </span>
+              <span class="tour-card__details">
+                <span class="tour-card__meta"><time datetime="PT55S">00:55</time></span>
+                <strong>Área da Churrasqueira</strong>
+                <small><span aria-hidden="true">♧</span> Até 80 pessoas</small>
+              </span>
+            </button>
+
+            <button class="tour-card" type="button" data-time="75" aria-pressed="false">
+              <span class="tour-card__images">
+                <img alt="Área verde do sítio" />
+                <img alt="Cerimônia ao ar livre" />
+              </span>
+              <span class="tour-card__details">
+                <span class="tour-card__meta"><time datetime="PT1M15S">01:15</time></span>
+                <strong>Área Verde</strong>
+                <small><span aria-hidden="true">♧</span> Cerimônias ao ar livre</small>
+              </span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="photo-gallery section" id="gallery" aria-labelledby="gallery-title">
+        <div class="section-header">
+            <p class="eyebrow">
+              <span class="eyebrow__icon" aria-hidden="true">
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                >
+                  <rect x="3" y="5" width="14" height="14" rx="2"></rect>
+                  <path d="m5.5 16 3.5-3.5 2.5 2.5 1.5-1.5 2.5 2.5"></path>
+                  <circle cx="12.5" cy="9.5" r="1.25"></circle>
+                  <path d="M7 3h12a2 2 0 0 1 2 2v12"></path>
+                </svg>
+              </span>
+              Galeria
+            </p>
+
+            <h2 id="gallery-title" class="section-title">
+              Fotos do sitio
+            </h2>
+        </div>
+
+        <div class="gallery-filters" role="group" aria-label="Filtrar álbuns por ambiente">
+          <button class="gallery-filter is-active" type="button" data-filter="all" aria-pressed="true">
+            <span class="gallery-filter__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="14" height="14" rx="2"></rect><path d="m5.5 16 3.5-3.5 2.5 2.5 1.5-1.5 2.5 2.5"></path><circle cx="12.5" cy="9.5" r="1.25"></circle><path d="M7 3h12a2 2 0 0 1 2 2v12"></path></svg></span>
+            Todas
+          </button>
+
+          <button class="gallery-filter" type="button" data-filter="rooms" aria-pressed="false">
+            <span class="gallery-filter__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19V10a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v9"></path><path d="M3 16h18"></path><path d="M6 16v-4h5a2 2 0 0 1 2 2v2"></path><path d="M3 19v2M21 19v2"></path></svg></span>
+            Acomodacoes
+          </button>
+
+          <button class="gallery-filter" type="button" data-filter="parking" aria-pressed="false">
+            <span class="gallery-filter__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"></rect><path d="M9 17V7h3.3a3 3 0 0 1 0 6H9"></path></svg></span>
+            Estacionamento
+          </button>
+
+          <button class="gallery-filter" type="button" data-filter="pool" aria-pressed="false">
+            <span class="gallery-filter__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8v6"></path><path d="M7 8v6"></path><path d="M3 11h4"></path><path d="M10 17c1.1 1 2.2 1 3.3 0s2.2-1 3.3 0 2.2 1 3.4 0"></path><path d="M4 21c1.1 1 2.2 1 3.3 0s2.2-1 3.3 0 2.2 1 3.4 0"></path></svg></span>
+            Area de Lazer
+          </button>
+
+          <button class="gallery-filter" type="button" data-filter="lakes" aria-pressed="false">
+            <span class="gallery-filter__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9c1.4 1.2 2.8 1.2 4.2 0s2.8-1.2 4.2 0 2.8 1.2 4.2 0 2.8-1.2 4.2 0"></path><path d="M3 14c1.4 1.2 2.8 1.2 4.2 0s2.8-1.2 4.2 0 2.8 1.2 4.2 0 2.8-1.2 4.2 0"></path><path d="M3 19c1.4 1.2 2.8 1.2 4.2 0s2.8-1.2 4.2 0 2.8 1.2 4.2 0 2.8-1.2 4.2 0"></path></svg></span>
+            Lagos
+          </button>
+
+          <button class="gallery-filter" type="button" data-filter="bathrooms" aria-pressed="false">
+            <span class="gallery-filter__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="5" r="2"></circle><circle cx="16" cy="5" r="2"></circle><path d="M8 8v5l-2 4h4l-2-4"></path><path d="M16 8v9"></path><path d="M13 12h6"></path><path d="M14 21h4"></path></svg></span>
+            Paisagens
+          </button>
+
+          <button class="gallery-filter" type="button" data-filter="main-hall" aria-pressed="false">
+            <span class="gallery-filter__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7"></path><path d="M5 10v10h14V10"></path><path d="M9 20v-5h6v5"></path><path d="M8 11h.01M12 11h.01M16 11h.01"></path></svg></span>
+            Salão Principal
+          </button>
+
+          <button class="gallery-filter" type="button" data-filter="meeting-hall" aria-pressed="false">
+            <span class="gallery-filter__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="2.5"></circle><circle cx="16" cy="8" r="2.5"></circle><path d="M3.5 19c.3-3 2-4.5 4.5-4.5s4.2 1.5 4.5 4.5"></path><path d="M11.5 19c.25-2.55 1.72-3.9 4.1-3.9 2.55 0 4.1 1.45 4.4 3.9"></path></svg></span>
+            Salão de Reuniões
+          </button>
+        </div>
+
+        <div class="gallery-grid">
+          <a class="gallery-album gallery-album--tall"  data-category="rooms" aria-label="Filtrar galeria por Quartos, com 3 fotos">
+            <img  src="/assets/img/room/room1.png" alt="Quarto confortável do sítio" loading="lazy" />
+            <span class="gallery-album__shade" aria-hidden="true"></span>
+            <span class="gallery-album__content"><strong>Acomodacoes</strong><small><span aria-hidden="true">▧</span> 3 fotos</small></span>
+          </a>
+
+          <a class="gallery-album gallery-album--tall"  data-category="parking" aria-label="Filtrar galeria por Estacionamento, com 3 fotos">
+            <img src="/assets/img/parker/parker1.png" alt="Estacionamento amplo e gramado" loading="lazy" />
+            <span class="gallery-album__shade" aria-hidden="true"></span>
+            <span class="gallery-album__content"><strong>Estacionamento</strong><small><span aria-hidden="true">▧</span> 3 fotos</small></span>
+          </a>
+
+          <a class="gallery-album gallery-album--tall"  data-category="pool" aria-label="Filtrar galeria por Piscina, com 5 fotos">
+            <img src="/assets/img/swimming-pool/pool1.png" alt="Piscina com vista para a natureza" loading="lazy" />
+            <span class="gallery-album__shade" aria-hidden="true"></span>
+            <span class="gallery-album__content"><strong>Area de Lazer</strong><small><span aria-hidden="true">▧</span> 5 fotos</small></span>
+          </a>
+
+          <a class="gallery-album gallery-album--tall"  data-category="lakes" aria-label="Filtrar galeria por Lagos, com 3 fotos">
+            <img src="/assets/img/lake/lake1.png" alt="Lago do sítio ao entardecer" loading="lazy" />
+            <span class="gallery-album__shade" aria-hidden="true"></span>
+            <span class="gallery-album__content"><strong>Lagos</strong><small><span aria-hidden="true">▧</span> 3 fotos</small></span>
+          </a>
+
+          <a class="gallery-album gallery-album--tall"  data-category="bathrooms" aria-label="Filtrar galeria por Banheiros, com 5 fotos">
+            <img src="/assets/img/room/room1.png" alt="Banheiros do sítio" loading="lazy" />
+            <span class="gallery-album__shade" aria-hidden="true"></span>
+            <span class="gallery-album__content"><strong>Area Recreativa</strong><small><span aria-hidden="true">▧</span> 5 fotos</small></span>
+          </a>
+
+          <a class="gallery-album gallery-album--tall"  data-category="main-hall" aria-label="Filtrar galeria por Salão Principal, com 3 fotos">
+            <img src="/assets/img/main-hall/main-hall.png" alt="Salão principal preparado para evento" loading="lazy" />
+            <span class="gallery-album__shade" aria-hidden="true"></span>
+            <span class="gallery-album__content"><strong>Salão Principal</strong><small><span aria-hidden="true">▧</span> 3 fotos</small></span>
+          </a>
+
+          <a class="gallery-album gallery-album--tall"  data-category="meeting-hall" aria-label="Filtrar galeria por Salão de Reuniões, com 5 fotos">
+            <img src="/assets/img/main-hall/main-hall2.png" alt="Salão de reuniões com mesa de madeira" loading="lazy" />
+            <span class="gallery-album__shade" aria-hidden="true"></span>
+            <span class="gallery-album__content"><strong>Salão de Reuniões</strong><small><span aria-hidden="true">▧</span> 5 fotos</small></span>
+          </a>
+
+          <a class="gallery-album gallery-album--tall"  data-category="meeting-hall" aria-label="Filtrar galeria por Salão de Reuniões, com 5 fotos">
+            <img  src="/assets/img/main-hall/main-hall2.png" alt="Salão de reuniões com mesa de madeira" loading="lazy" />
+            <span class="gallery-album__shade" aria-hidden="true"></span>
+            <span class="gallery-album__content"><strong>Area Verde</strong><small><span aria-hidden="true">▧</span> 5 fotos</small></span>
+          </a>
+        </div>
+
+        <div class="gallery-viewer"
+  id="gallery-viewer"
+  aria-live="polite"
+  hidden
+>
+  
+
+  <div class="gallery-carousel">
+    <button
+      class="gallery-carousel__button gallery-carousel__button--previous"
+      type="button"
+      data-gallery-previous
+      aria-label="Ver foto anterior"
+    >
+      ‹
+    </button>
+
+    <div
+      class="gallery-carousel__viewport"
+      id="gallery-carousel"
+      tabindex="0"
+      aria-label="Carrossel de fotos do ambiente selecionado"
+    >
+      <div
+        class="gallery-carousel__track"
+        id="gallery-carousel-track"
+      ></div>
+    </div>
+
+    <button
+      class="gallery-carousel__button gallery-carousel__button--next"
+      type="button"
+      data-gallery-next
+      aria-label="Ver próxima foto"
+    >
+      ›
+    </button>
+  </div>
+
+  <div class="gallery-viewer__footer">
+    <span id="gallery-carousel-counter">1 de 1 foto</span>
+  </div>
+        </div>
+      </section>
+      
+      <section class="parallax-section" aria-labelledby="parallax-quote">
+        <div class="parallax-section__image-wrapper" data-parallax-wrapper aria-hidden="true">
+          <img
+            class="parallax-section__image"
+            data-parallax-image
+            src="/assets/img/lake/lake1 copy.png"
+            alt=""
+            width="1920"
+            height="1080"
+          />
+        </div>
+
+        <div class="parallax-section__overlay" aria-hidden="true"></div>
+
+        <blockquote class="parallax-section__quote" id="parallax-quote">
+          <p>
+            
+“Aqui o relógio perde a importância.</br> O que marca o tempo é a luz</br> mudando sobre o campo.”
+          </p>
+        </blockquote>
+      </section>
+      
+      <section class="interactive-tour section" id="interactive-tour" aria-labelledby="interactive-tour-title">
+        <div class="section-header">
+            <p class="eyebrow">
+              <span class="eyebrow__icon" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+                  <path d="M12 5v14"></path>
+                  <path d="m9.5 10 2.5 2.5 2.5-2.5"></path>
+                  <path d="m14.5 14-2.5-2.5L9.5 14"></path>
+                </svg>
+              </span>
+
+              Tour interativo
+            </p>
+            <h2 id="interactive-tour-title" class="section-title">
+             Tour interativo
+            <em>por cada ambiente.</em>
+          </h2>
+
+          <p class="section-description">
+           Arraste o controle sobre cada foto para revelar a transformação e imaginar o seu evento em cada espaço do sítio.
+          </p>
+        </div>
+
+        <div class="tour-tabs" role="tablist" aria-label="Escolha um ambiente">
+          <button class="tour-tab is-active" type="button" role="tab" aria-selected="true" data-space="main-hall">
+            <span class="tour-tab__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="8.5" cy="14" r="4.5"></circle>
+                <circle cx="15.5" cy="10" r="4.5"></circle>
+                <path d="m12 7.5 1.1 1.1L14.8 7"></path>
+              </svg>
+            </span>
+            <span>Casamento</span>
+          </button>
+
+          <button class="tour-tab" type="button" role="tab" aria-selected="false" data-space="rooms">
+            <span class="tour-tab__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 21c-3.5-2.9-7-5.6-7-10a3.5 3.5 0 0 1 6-2.45A3.5 3.5 0 0 1 17 11c0 4.4-3.5 7.1-5 10Z"></path>
+                <path d="M12 4v3M8.2 5.1l1.5 2.6M15.8 5.1l-1.5 2.6"></path>
+                <path d="M19 5.5h.01M20 9h.01"></path>
+              </svg>
+            </span>
+            <span>Aniversário</span>
+          </button>
+
+          <button class="tour-tab" type="button" role="tab" aria-selected="false" data-space="lake-garden">
+            <span class="tour-tab__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m3 19 6.5-10L12 13l3.5-6L21 19"></path>
+                <path d="M3 19h18"></path>
+                <path d="M7 19v-5l3 1.5L12 13"></path>
+              </svg>
+            </span>
+            <span>Retiro</span>
+          </button>
+
+          <button class="tour-tab" type="button" role="tab" aria-selected="false" data-space="barbecue">
+            <span class="tour-tab__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3.5"></circle>
+                <path d="M12 2v2.5M12 19.5V22M22 12h-2.5M4.5 12H2M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8M19.1 19.1l-1.8-1.8M6.7 6.7 4.9 4.9"></path>
+              </svg>
+            </span>
+            <span>Day Off</span>
+          </button>
+        </div>
+
+        <article class="space-comparison" id="space-comparison">
+          <div class="space-comparison__details">
+            <p class="eyebrow" id="space-eyebrow">Salão principal</p>
+            <h3 id="space-title">O coração do sítio</h3>
+            <p id="space-description">Veja o salão ganhar vida: de um espaço amplo e acolhedor ao cenário completo para receber seus convidados.</p>
+            <a id="space-link" href="https://wa.me/55SEUDDDSEUNUMERO?text=Ol%C3%A1%21%20Quero%20conhecer%20o%20Recanto%20Verde%20pessoalmente." target="_blank" rel="noopener noreferrer">Quero conhecer pessoalmente <span aria-hidden="true">↗</span></a>
+          </div>
+
+          <div class="image-comparison" id="image-comparison">
+            <img class="image-comparison__after" id="after-image" src="/assets/img/main-hall/main-hall2.png" alt="Salão principal preparado para um evento" />
+
+            <div class="image-comparison__before" id="before-layer">
+              <img id="before-image" src="/assets/img/main-hall/main-hall.png" alt="Salão principal antes da montagem do evento" />
+            </div>
+
+            <span class="image-comparison__label image-comparison__label--before">Antes</span>
+            <span class="image-comparison__label image-comparison__label--after">Depois</span>
+
+            <div class="image-comparison__divider" id="comparison-divider" aria-hidden="true">
+              <span>↔</span>
+            </div>
+
+            <label class="sr-only" for="comparison-range">Arraste para comparar as imagens antes e depois</label>
+            <input class="image-comparison__range" id="comparison-range" type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois" />
+          </div>
+        </article>
+      </section>
+
+      <section class="testimonials section" id="testimonials" aria-labelledby="testimonials-title">
+          <div class="section-header">
+              <p class="eyebrow">
+                Quem já celebrou aqui
+              </p>
+              <h2 id="testimonials-title" class="section-title">Comentários <em>reais</em></h2>
+          </div>
+
+          <div class="testimonials__grid">
+  <figure class="testimonial-card">
+    <div class="testimonial-card__top">
+      <span
+        class="testimonial-card__rating"
+        aria-label="Avaliação de 5 estrelas"
+      >
+        <span class="testimonial-card__rating-score">5,0</span>
+        <span class="testimonial-card__stars" aria-hidden="true">★★★★★</span>
+      </span>
+    </div>
+    
+
+    <blockquote>
+      <p>
+        “Queríamos algo simples e acabou sendo a coisa mais bonita que já
+        vivemos. Nossos convidados ficaram até de manhã olhando as estrelas.”
+      </p>
+    </blockquote>
+
+    <figcaption class="testimonial-card__author">
+      <span class="testimonial-card__person">
+        <span class="testimonial-card__initials" aria-hidden="true">MT</span>
+
+        <span>
+          <strong>Marina e Tiago</strong>
+          <small>Casamento <span aria-hidden="true">•</span> Março</small>
+        </span>
+      </span>
+
+      <a
+        class="testimonial-card__more"
+        href="LINK-DA-AVALIACAO-NO-GOOGLE-MAPS"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Ver avaliação de Marina e Tiago no Google Maps"
+      >
+        Ver mais <span aria-hidden="true">↗</span>
+      </a>
+    </figcaption>
+  </figure>
+
+  <figure class="testimonial-card">
+     <div class="testimonial-card__top">
+        <span
+          class="testimonial-card__rating"
+          aria-label="Avaliação de 5 estrelas"
+        >
+          <span class="testimonial-card__rating-score">5,0</span>
+          <span class="testimonial-card__stars" aria-hidden="true">★★★★★</span>
+        </span>
+    </div>
+    <blockquote>
+      <p>
+        “Levei meu time pra dois dias fora da rotina. Voltamos com ideias que
+        nunca sairiam de uma sala de reunião.”
+      </p>
+    </blockquote>
+
+    <figcaption class="testimonial-card__author">
+      <span class="testimonial-card__person">
+        <span class="testimonial-card__initials" aria-hidden="true">RA</span>
+
+        <span>
+          <strong>Renata Alcântara</strong>
+          <small>
+            Retiro corporativo
+            <span aria-hidden="true">•</span>
+            Junho
+          </small>
+        </span>
+      </span>
+
+      <a
+        class="testimonial-card__more"
+        href="LINK-DA-AVALIACAO-NO-GOOGLE-MAPS"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Ver avaliação de Renata Alcântara no Google Maps"
+      >
+        Ver mais <span aria-hidden="true">↗</span>
+      </a>
+    </figcaption>
+  </figure>
+
+  <figure class="testimonial-card">
+    <div class="testimonial-card__top">
+      <span
+        class="testimonial-card__rating"
+        aria-label="Avaliação de 5 estrelas"
+      >
+        <span class="testimonial-card__rating-score">5,0</span>
+        <span class="testimonial-card__stars" aria-hidden="true">★★★★★</span>
+      </span>
+    </div>
+    <blockquote>
+      <p>
+        “Meus pais queriam o campo de volta. O espaço entregou exatamente
+        isso, com um cuidado que emocionou todo mundo.”
+      </p>
+    </blockquote>
+
+    <figcaption class="testimonial-card__author">
+      <span class="testimonial-card__person">
+        <span class="testimonial-card__initials" aria-hidden="true">FD</span>
+
+        <span>
+          <strong>Família Duarte</strong>
+          <small>
+            Bodas de ouro
+            <span aria-hidden="true">•</span>
+            Setembro
+          </small>
+        </span>
+      </span>
+
+      <a
+        class="testimonial-card__more"
+        href="LINK-DA-AVALIACAO-NO-GOOGLE-MAPS"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Ver avaliação da Família Duarte no Google Maps"
+      >
+        Ver mais <span aria-hidden="true">↗</span>
+      </a>
+    </figcaption>
+  </figure>
+
+  <figure class="testimonial-card">
+    <div class="testimonial-card__top">
+      <span
+        class="testimonial-card__rating"
+        aria-label="Avaliação de 5 estrelas"
+      >
+        <span class="testimonial-card__rating-score">5,0</span>
+        <span class="testimonial-card__stars" aria-hidden="true">★★★★★</span>
+      </span>
+    </div>
+    <blockquote>
+      <p>
+        “A prática ao amanhecer no gramado foi inesquecível. Um lugar que
+        respeita o silêncio de quem procura silêncio.”
+      </p>
+    </blockquote>
+
+    <figcaption class="testimonial-card__author">
+      <span class="testimonial-card__person">
+        <span class="testimonial-card__initials" aria-hidden="true">CR</span>
+
+        <span>
+          <strong>Coletivo Raiz</strong>
+          <small>
+            Encontro de yoga
+            <span aria-hidden="true">•</span>
+            Novembro
+          </small>
+        </span>
+      </span>
+
+      <a
+        class="testimonial-card__more"
+        href="LINK-DA-AVALIACAO-NO-GOOGLE-MAPS"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Ver avaliação do Coletivo Raiz no Google Maps"
+      >
+        Ver mais <span aria-hidden="true">↗</span>
+      </a>
+    </figcaption>
+  </figure>
+          </div>
+      </section>
+      
+      <section class="site-map section" id="site-map" aria-labelledby="site-map-title">
+        <div class="section-header">
+            <p class="eyebrow">
+              <span class="eyebrow__icon" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m9 4 6-2 6 2v16l-6 2-6-2-6 2V6l6-2Z"></path>
+                  <path d="M9 4v16"></path>
+                  <path d="M15 2v16"></path>
+                  <path d="M6.3 9.2c1.2-.9 2.3-1 3.7-.2 1.4.9 2.8.8 4.1-.2 1.3-1 2.5-1.1 3.6-.3"></path>
+                </svg>
+              </span>
+
+              Mapa do sítio
+            </p>
+            <h2 id="site-map-title" class="section-title">
+             Explore o terreno
+            <em>ponto por ponto.</em>
+          </h2>
+
+          <p class="section-description">
+           Toque em cada marcador do mapa para conhecer os espaços do sítio e quantas pessoas cada um recebe.
+          </p>
+        </div>
+
+  <div class="site-map__layout">
+    <div class="map-panel">
+      <p class="map-panel__label">Vista aérea ilustrada</p>
+
+      <img class="map-panel__image" src="/assets/img/map/Map4x3.png" alt="Mapa ilustrado da área do sítio" />
+
+      <button class="map-marker" type="button" data-space="rooms" style="--map-x: 15%; --map-y: 43%;" aria-label="Ver detalhes dos quartos" aria-pressed="false">
+        <span class="map-marker__icon" aria-hidden="true">▱</span>
+        <span class="map-marker__name">Quartos</span>
+      </button>
+
+      <button class="map-marker is-active" type="button" data-space="meeting-hall" style="--map-x: 47%; --map-y: 25%;" aria-label="Ver detalhes do salão de reuniões" aria-pressed="true">
+        <span class="map-marker__icon" aria-hidden="true">♧</span>
+        <span class="map-marker__name">Salão de Reuniões</span>
+      </button>
+
+      <button class="map-marker" type="button" data-space="lake-one" style="--map-x: 75%; --map-y: 31%;" aria-label="Ver detalhes do lago 1" aria-pressed="false">
+        <span class="map-marker__icon" aria-hidden="true">≋</span>
+        <span class="map-marker__name">Lago 1</span>
+      </button>
+
+      <button class="map-marker" type="button" data-space="pool" style="--map-x: 43%; --map-y: 65%;" aria-label="Ver detalhes da piscina" aria-pressed="false">
+        <span class="map-marker__icon" aria-hidden="true">≋</span>
+        <span class="map-marker__name">Piscina</span>
+      </button>
+
+      <button class="map-marker" type="button" data-space="lake-two" style="--map-x: 81%; --map-y: 72%;" aria-label="Ver detalhes do lago 2" aria-pressed="false">
+        <span class="map-marker__icon" aria-hidden="true">≋</span>
+        <span class="map-marker__name">Lago 2</span>
+      </button>
+    </div>
+
+    <article class="map-details" aria-live="polite">
+      <p class="eyebrow" id="map-details-capacity">120 pessoas</p>
+      <h3 id="map-details-title">Salão de Reuniões</h3>
+      <img id="map-details-image" src="/assets/img/main-hall/main-hall.png" alt="Salão de reuniões preparado para evento" />
+      <p class="map-details__description" id="map-details-description">Um ambiente acolhedor para celebrações, encontros e reuniões em meio à natureza.</p>
+    </article>
+  </div>
+      </section>
+
+      <section class="past-events section" id="past-events" aria-labelledby="past-events-title">
+  <div class="section-header">
+    <p class="eyebrow">Quem já viveu aqui</p>
+    <h2 id="past-events-title" class="section-title">Eventos que já aconteceram no sítio</h2>
+    <p class="section-description">
+      Veja como os ambientes foram montados em celebrações reais — clique em um evento para ver cada cantinho do sítio em ação.
+    </p>
+  </div>
+
+  <div class="past-events__grid">
+    <article class="event-card">
+      <a class="event-card__image-link" href="/eventos/casamento-camila-rafael/" data-event-id="camila-rafael" aria-label="Ver detalhes do Casamento Camila e Rafael">
+        <img src="/assets/img/lake/lake1.png" alt="Cerimônia de casamento montada no gramado do sítio" loading="lazy" />
+        <span class="event-card__type">Casamento</span>
+        <span class="event-card__spaces">▧ 3 ambientes</span>
+      </a>
+      <div class="event-card__content">
+        <h3><a href="/eventos/casamento-camila-rafael/" data-event-id="camila-rafael">Casamento Camila &amp; Rafael</a></h3>
+        <p class="event-card__meta"><span aria-hidden="true">▦</span> Junho de 2026 <span aria-hidden="true">♧</span> 140 convidados</p>
+        <p class="event-card__description">Cerimônia à beira do lago e recepção no gramado com varal de luzes, jantar servido em mesas comunitárias e festa no Salão Principal.</p>
+        <ul class="event-card__tags" aria-label="Ambientes usados">
+          <li>⌖ Gramado principal</li>
+          <li>⌖ Salão Principal</li>
+          <li>⌖ Lagos</li>
+        </ul>
+        <a class="event-card__link" href="/eventos/casamento-camila-rafael/" data-event-id="camila-rafael">Ver como ficou cada ambiente <span aria-hidden="true">→</span></a>
+      </div>
+    </article>
+
+    <article class="event-card">
+      <a class="event-card__image-link" href="/eventos/aniversario-alice/" data-event-id="alice" aria-label="Ver detalhes do Aniversário da Alice">
+        <img src="/assets/img/lake/lake1.png" alt="Festa infantil montada na piscina do sítio" loading="lazy" />
+        <span class="event-card__type">Aniversário</span>
+        <span class="event-card__spaces">▧ 3 ambientes</span>
+      </a>
+      <div class="event-card__content">
+        <h3><a href="/eventos/aniversario-alice/" data-event-id="alice">Aniversário da Alice — 7 anos</a></h3>
+        <p class="event-card__meta"><span aria-hidden="true">▦</span> Abril de 2026 <span aria-hidden="true">♧</span> 60 convidados</p>
+        <p class="event-card__description">Festa infantil na beira da piscina com mesas decoradas, recreação ao ar livre e lanche servido na área gourmet.</p>
+        <ul class="event-card__tags" aria-label="Ambientes usados">
+          <li>⌖ Piscina</li>
+          <li>⌖ Área gourmet</li>
+          <li>⌖ Gramado</li>
+        </ul>
+        <a class="event-card__link" href="/eventos/aniversario-alice/" data-event-id="alice">Ver como ficou cada ambiente <span aria-hidden="true">→</span></a>
+      </div>
+    </article>
+
+    <article class="event-card">
+      <a class="event-card__image-link" href="/eventos/retiro-equipe-horizonte/" data-event-id="horizonte" aria-label="Ver detalhes do Retiro da Equipe Horizonte">
+        <img src="/assets/img/lake/lake1.png" alt="Retiro corporativo com fogueira no sítio ao entardecer" loading="lazy" />
+        <span class="event-card__type">Retiro corporativo</span>
+        <span class="event-card__spaces">▧ 3 ambientes</span>
+      </a>
+      <div class="event-card__content">
+        <h3><a href="/eventos/retiro-equipe-horizonte/" data-event-id="horizonte">Retiro da Equipe Horizonte</a></h3>
+        <p class="event-card__meta"><span aria-hidden="true">▦</span> Março de 2026 <span aria-hidden="true">♧</span> 45 participantes</p>
+        <p class="event-card__description">Dois dias de imersão com dinâmicas no Salão de Reuniões, pernoite nos quartos e roda de conversa na fogueira ao entardecer.</p>
+        <ul class="event-card__tags" aria-label="Ambientes usados">
+          <li>⌖ Salão de Reuniões</li>
+          <li>⌖ Quartos</li>
+          <li>⌖ Fogueira</li>
+        </ul>
+        <a class="event-card__link" href="/eventos/retiro-equipe-horizonte/" data-event-id="horizonte">Ver como ficou cada ambiente <span aria-hidden="true">→</span></a>
+      </div>
+    </article>
+  </div>
+      </section>
+
+      <dialog class="event-modal" id="event-modal" aria-labelledby="event-modal-title">
+        <div class="event-modal__panel">
+          <header class="event-modal__header">
+            <div>
+              <p class="event-modal__eyebrow" id="event-modal-eyebrow"></p>
+              <h2 id="event-modal-title"></h2>
+            </div>
+            <button class="event-modal__close" type="button" data-event-close aria-label="Fechar detalhes do evento">×</button>
+          </header>
+
+          <div class="event-modal__body">
+            <section class="event-carousel" aria-label="Galeria de fotos do evento">
+              <div class="event-carousel__viewport">
+                <div class="event-carousel__track" id="event-carousel-track"></div>
+
+                <span
+                  class="event-carousel__location"
+                  id="event-carousel-location"
+                ></span>
+
+                <button
+                  class="event-carousel__arrow event-carousel__arrow--previous"
+                  type="button"
+                  data-carousel-previous
+                  aria-label="Foto anterior"
+                >
+                  ‹
+                </button>
+
+                <button
+                  class="event-carousel__arrow event-carousel__arrow--next"
+                  type="button"
+                  data-carousel-next
+                  aria-label="Próxima foto">
+                  ›
+                </button>
+
+                <div class="event-carousel__info">
+                  <p id="event-modal-description"></p>
+
+                  <div class="event-carousel__spaces">
+                    <h3>Ambientes utilizados</h3>
+                    <ul id="event-modal-spaces"></ul>
+                  </div>
+                </div>
+              </div>
+              <div class="event-carousel__dots" id="event-carousel-dots" aria-label="Selecionar foto"></div>
+            </section>
+
+           
+          </div>
+        </div>
+      </dialog>
+      
+      <section class="social-showcase section"
+                id="redes-sociais"
+                aria-labelledby="social-showcase-title">
+        <div class="section-header">
+            <p class="eyebrow">
+              Nas redes
+            </p>
+
+            <h2 id="social-showcase-title" class="section-title">
+              Siga o sítio
+                <em>onde você estiver.</em>
+            </h2>
+            <p class="section-description">
+              Acompanhe bastidores, eventos e novidades nas nossas redes sociais.
+            </p>
+        </div>
+  
+  <div class="social-showcase__grid">
+    <!-- Instagram -->
+    <article class="social-card social-card--instagram">
+      <div class="social-card__profile">
+        <span class="social-card__network-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+            <circle cx="12" cy="12" r="4"></circle>
+            <circle cx="17.4" cy="6.7" r="1"></circle>
+          </svg>
+        </span>
+
+        <span>@sitioipe</span>
+      </div>
+
+      <a
+        class="social-card__image-link"
+        href="https://www.instagram.com/p/SEU-POST-AQUI/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Abrir publicação no Instagram"
+      >
+        <img
+          src="/assets/img/social/instagram-casamento.jpg"
+          alt="Convidados comemorando um casamento realizado no sítio"
+          loading="lazy"
+        />
+
+        <span class="social-card__image-overlay">
+          Ver no Instagram
+          <span aria-hidden="true">↗</span>
+        </span>
+      </a>
+
+      <div class="social-card__meta">
+        <div class="social-card__engagement">
+          <span aria-label="1247 curtidas">
+            <span aria-hidden="true">♡</span>
+            1.247
+          </span>
+
+          <span aria-label="86 comentários">
+            <span aria-hidden="true">◌</span>
+            86
+          </span>
+        </div>
+
+        <a
+          class="social-card__share"
+          href="https://www.instagram.com/p/SEU-POST-AQUI/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Compartilhar ou abrir publicação no Instagram"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="18" cy="5" r="2.2"></circle>
+            <circle cx="6" cy="12" r="2.2"></circle>
+            <circle cx="18" cy="19" r="2.2"></circle>
+            <path d="M8 11l7.8-4.8M8 13l7.8 4.8"></path>
+          </svg>
+        </a>
+      </div>
+    </article>
+
+    <!-- TikTok -->
+    <article class="social-card social-card--tiktok">
+      <div class="social-card__profile">
+        <span class="social-card__network-icon social-card__network-icon--filled" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M14.5 3v10.1a4.2 4.2 0 1 1-3.3-4.1v2.8a1.7 1.7 0 1 0 .8 1.4V3h2.5c.3 2 1.4 3.4 3.5 3.8v2.5A7 7 0 0 1 14.5 8V3z"></path>
+          </svg>
+        </span>
+
+        <span>@sitioipe</span>
+      </div>
+
+      <a
+        class="social-card__image-link"
+        href="https://www.tiktok.com/@SEU-PERFIL/video/ID-DO-VIDEO"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Abrir vídeo no TikTok"
+      >
+        <img
+          src="/assets/img/social/tiktok-cerimonia.jpg"
+          alt="Cerimônia noturna no gramado do sítio com iluminação suspensa"
+          loading="lazy"
+        />
+
+        <span class="social-card__image-overlay">
+          Ver no TikTok
+          <span aria-hidden="true">↗</span>
+        </span>
+      </a>
+
+      <div class="social-card__meta">
+        <div class="social-card__engagement">
+          <span aria-label="45200 curtidas">
+            <span aria-hidden="true">♡</span>
+            45,2K
+          </span>
+
+          <span aria-label="1200 comentários">
+            <span aria-hidden="true">◌</span>
+            1,2K
+          </span>
+        </div>
+
+        <a
+          class="social-card__share"
+          href="https://www.tiktok.com/@SEU-PERFIL/video/ID-DO-VIDEO"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Compartilhar ou abrir vídeo no TikTok"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="18" cy="5" r="2.2"></circle>
+            <circle cx="6" cy="12" r="2.2"></circle>
+            <circle cx="18" cy="19" r="2.2"></circle>
+            <path d="M8 11l7.8-4.8M8 13l7.8 4.8"></path>
+          </svg>
+        </a>
+      </div>
+    </article>
+
+    <!-- Facebook -->
+    <article class="social-card social-card--facebook">
+      <div class="social-card__profile">
+        <span class="social-card__network-icon social-card__network-icon--filled" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M13.7 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5H17V3.9c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 4V10H8.3v3h2.6v8h2.8z"></path>
+          </svg>
+        </span>
+
+        <span>Sítio Ipê</span>
+      </div>
+
+      <a
+        class="social-card__image-link"
+        href="https://www.facebook.com/SUA-PAGINA/posts/ID-DO-POST/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Abrir publicação no Facebook"
+      >
+        <img
+          src="/assets/img/lake/lake1.png"
+          alt="Show e pista de dança durante evento realizado no sítio"
+          loading="lazy"
+        />
+
+        <span class="social-card__image-overlay">
+          Ver no Facebook
+          <span aria-hidden="true">↗</span>
+        </span>
+      </a>
+
+      <div class="social-card__meta">
+        <div class="social-card__engagement">
+          <span aria-label="346 reações">
+            <span aria-hidden="true">♡</span>
+            346
+          </span>
+
+          <span aria-label="28 comentários">
+            <span aria-hidden="true">◌</span>
+            28
+          </span>
+        </div>
+
+        <a
+          class="social-card__share"
+          href="https://www.facebook.com/SUA-PAGINA/posts/ID-DO-POST/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Compartilhar ou abrir publicação no Facebook"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="18" cy="5" r="2.2"></circle>
+            <circle cx="6" cy="12" r="2.2"></circle>
+            <circle cx="18" cy="19" r="2.2"></circle>
+            <path d="M8 11l7.8-4.8M8 13l7.8 4.8"></path>
+          </svg>
+        </a>
+      </div>
+    </article>
+
+    <article class="social-card social-card--facebook">
+      <div class="social-card__profile">
+        <span class="social-card__network-icon social-card__network-icon--filled" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M13.7 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5H17V3.9c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 4V10H8.3v3h2.6v8h2.8z"></path>
+          </svg>
+        </span>
+
+        <span>Sítio Ipê</span>
+      </div>
+
+      <a
+        class="social-card__image-link"
+        href="https://www.facebook.com/SUA-PAGINA/posts/ID-DO-POST/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Abrir publicação no Facebook"
+      >
+        <img
+          src="/assets/img/lake/lake1.png"
+          alt="Show e pista de dança durante evento realizado no sítio"
+          loading="lazy"
+        />
+
+        <span class="social-card__image-overlay">
+          Ver no Facebook
+          <span aria-hidden="true">↗</span>
+        </span>
+      </a>
+
+      <div class="social-card__meta">
+        <div class="social-card__engagement">
+          <span aria-label="346 reações">
+            <span aria-hidden="true">♡</span>
+            346
+          </span>
+
+          <span aria-label="28 comentários">
+            <span aria-hidden="true">◌</span>
+            28
+          </span>
+        </div>
+
+        <a
+          class="social-card__share"
+          href="https://www.facebook.com/SUA-PAGINA/posts/ID-DO-POST/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Compartilhar ou abrir publicação no Facebook"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="18" cy="5" r="2.2"></circle>
+            <circle cx="6" cy="12" r="2.2"></circle>
+            <circle cx="18" cy="19" r="2.2"></circle>
+            <path d="M8 11l7.8-4.8M8 13l7.8 4.8"></path>
+          </svg>
+        </a>
+      </div>
+    </article>
+  </div>
+
+  <div class="social-showcase__actions">
+    <a
+      class="social-follow-button"
+      href="https://www.instagram.com/SEU-PERFIL/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="social-follow-button__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+          <circle cx="12" cy="12" r="4"></circle>
+          <circle cx="17.4" cy="6.7" r="1"></circle>
+        </svg>
+      </span>
+
+      Seguir no Instagram
+    </a>
+
+    <a
+      class="social-follow-button"
+      href="https://www.facebook.com/SUA-PAGINA/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="social-follow-button__icon social-follow-button__icon--filled" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <path d="M13.7 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5H17V3.9c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 4V10H8.3v3h2.6v8h2.8z"></path>
+        </svg>
+      </span>
+
+      Seguir no Facebook
+    </a>
+
+    <a
+      class="social-follow-button"
+      href="https://www.tiktok.com/@SEU-PERFIL"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="social-follow-button__icon social-follow-button__icon--filled" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <path d="M14.5 3v10.1a4.2 4.2 0 1 1-3.3-4.1v2.8a1.7 1.7 0 1 0 .8 1.4V3h2.5c.3 2 1.4 3.4 3.5 3.8v2.5A7 7 0 0 1 14.5 8V3z"></path>
+        </svg>
+      </span>
+
+      Seguir no TikTok
+    </a>
+  </div>
+      </section>
+
+      <button class="whatsapp-float-button" id="open-whatsapp-modal" type="button" aria-haspopup="dialog" aria-controls="whatsapp-modal" aria-label="Abrir formulário de contato pelo WhatsApp">
+        <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path d="M16.02 3.2a12.65 12.65 0 0 0-10.9 19.08L3.5 28.2l6.08-1.55A12.66 12.66 0 1 0 16.02 3.2Zm0 22.95c-2.03 0-4.01-.55-5.74-1.58l-.41-.24-3.61.92.96-3.52-.27-.43a10.4 10.4 0 1 1 9.07 4.85Zm5.7-7.78c-.31-.16-1.84-.91-2.13-1.02-.28-.1-.49-.16-.7.16-.2.3-.8 1.02-.97 1.23-.18.2-.36.23-.67.08a8.49 8.49 0 0 1-2.5-1.54 9.37 9.37 0 0 1-1.73-2.16c-.18-.3-.02-.46.13-.61.14-.14.3-.36.46-.54.15-.18.2-.31.3-.52.1-.2.05-.38-.03-.54-.08-.15-.7-1.69-.96-2.31-.25-.61-.51-.53-.7-.54h-.59c-.2 0-.53.08-.8.38-.29.31-1.06 1.03-1.06 2.52 0 1.48 1.09 2.92 1.24 3.12.16.2 2.14 3.27 5.18 4.59.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.08 1.84-.75 2.1-1.47.26-.72.26-1.34.18-1.47-.08-.13-.28-.2-.59-.36Z" />
+        </svg>
+      </button>
+
+      <div class="whatsapp-modal" id="whatsapp-modal" role="dialog" aria-modal="true" aria-labelledby="whatsapp-modal-title" aria-hidden="true">
+        <div class="whatsapp-modal__backdrop" data-modal-close></div>
+
+        <div class="whatsapp-modal__dialog" role="document">
+          <button class="whatsapp-modal__close" type="button" data-modal-close aria-label="Fechar formulário">×</button>
+
+          <header class="whatsapp-modal__header">
+            <h2 id="whatsapp-modal-title">Fale pelo WhatsApp</h2>
+            <p>Preencha os dados e enviaremos sua mensagem.</p>
+          </header>
+
+          <form class="whatsapp-form" id="whatsapp-form">
+            <label>
+              <span>Nome completo</span>
+              <input id="contact-name" name="name" type="text" placeholder="Seu nome" autocomplete="name" required />
+            </label>
+
+            <label>
+              <span>Telefone com DDD</span>
+              <input id="contact-phone" name="phone" type="tel" placeholder="(21) 99999-9999" autocomplete="tel" inputmode="tel" required />
+            </label>
+
+            <div class="whatsapp-form__row">
+              <label>
+                <span>Data pretendida</span>
+                <input id="contact-date" name="date" type="date" required />
+              </label>
+
+              <label>
+                <span>Convidados</span>
+                <input id="contact-guests" name="guests" type="number" min="1" max="10000" placeholder="120" inputmode="numeric" required />
+              </label>
+            </div>
+
+            <label>
+              <span>Tipo de evento</span>
+              <select id="contact-event-type" name="eventType" required>
+                <option value="" selected disabled>Selecione...</option>
+                <option value="Casamento">Casamento</option>
+                <option value="Aniversário">Aniversário</option>
+                <option value="Confraternização">Confraternização</option>
+                <option value="Retiro corporativo">Retiro corporativo</option>
+                <option value="Encontro religioso">Encontro religioso</option>
+                <option value="Outro">Outro</option>
+              </select>
+            </label>
+
+            <label>
+              <span>Mensagem (opcional)</span>
+              <textarea id="contact-message" name="message" rows="3" placeholder="Conte um pouco sobre o que você imagina para o dia..."></textarea>
+            </label>
+
+            <button class="whatsapp-form__submit" type="submit">
+              <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16.02 3.2a12.65 12.65 0 0 0-10.9 19.08L3.5 28.2l6.08-1.55A12.66 12.66 0 1 0 16.02 3.2Zm0 22.95c-2.03 0-4.01-.55-5.74-1.58l-.41-.24-3.61.92.96-3.52-.27-.43a10.4 10.4 0 1 1 9.07 4.85Z" /></svg>
+              Enviar pelo WhatsApp
+            </button>
+          </form>
+        </div>
+      </div>
+
+    </main>
+
+    <footer class="site-footer" id="location">
+      <div class="site-footer__container">
+        <header class="site-footer__header">
+          <p class="eyebrow"><span aria-hidden="true">⌖</span> Localização</p>
+          <h2>Como chegar</h2>
+        </header>
+
+        <div class="site-footer__layout">
+          <section class="location-details" aria-labelledby="location-name">
+            <p class="eyebrow">Sítio para eventos</p>
+            <h3 id="location-name">Projeto Esperança</h3>
+
+            <dl class="location-details__list">
+              <div>
+                <dt>Bairro</dt>
+                <dd>Papucaia</dd>
+              </div>
+              <div>
+                <dt>Rua</dt>
+                <dd>Estrada Pedra Branca</dd>
+              </div>
+    
+              <div>
+                <dt>Cidade / Estado</dt>
+                <dd>Cachoeiras de Macacu - RJ</dd>
+              </div>
+              <div>
+                <dt>CEP</dt>
+                <dd>28695-000</dd>
+              </div>
+            </dl>
+
+            <a
+              class="location-details__button"
+              href="https://www.google.com/maps/place/Sitio+ip%C3%AA+Amarelo/@-22.6240202,-42.7499871,471m/data=!3m1!1e3!4m14!1m7!3m6!1s0x99cf0dfc11a45f:0x81b2a719b29065d8!2sSitio+ip%C3%AA+Amarelo!8m2!3d-22.6234448!4d-42.7484797!16s%2Fg%2F11pdr1frxg!3m5!1s0x99cf0dfc11a45f:0x81b2a719b29065d8!8m2!3d-22.6234448!4d-42.7484797!16s%2Fg%2F11pdr1frxg?entry=ttu&g_ep=EgoyMDI2MDkwOS4wIKXMDSoASAFQAw%3D%3D"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span aria-hidden="true">↗</span> Abrir no Google Maps
+            </a>
+
+            <address class="location-details__address">
+              Estrada Pedra Branca - Papucaia, Cachoeiras de Macacu - RJ
+            </address>
+          </section>
+
+          <section class="location-map" aria-label="Mapa de localização do sítio">
+           
+
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2053.0368599549874!2d-42.749987059904264!3d-22.624020185506357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x99cf0dfc11a45f%3A0x81b2a719b29065d8!2sSitio%20ip%C3%AA%20Amarelo!5e1!3m2!1spt-BR!2sbr!4v1789410640184!5m2!1spt-BR!2sbr" width="600" height="150" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            
+            <div class="location-map__placeholder">
+              <span class="location-map__pin" aria-hidden="true">⌖</span>
+              <strong>Mapa em breve</strong>
+              <p>Informe o endereço do sítio para inserirmos o mapa do Google Maps aqui.</p>
+            </div>
+          </section>
+        </div>
+
+        <div class="site-footer__bottom">
+          <p>© <span id="current-year">2026</span> Projeto Esperança. Todos os direitos reservados.</p>
+          <a href="https://wa.me/55SEUDDDSEUNUMERO?text=Ol%C3%A1%21%20Gostaria%20de%20falar%20sobre%20o%20Quintal%20do%20Vale." target="_blank" rel="noopener noreferrer">Fale conosco pelo WhatsApp</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/assets/js/index.js" defer></script>
+    <script async src="//www.instagram.com/embed.js"></script>
+  </body>
+</html>

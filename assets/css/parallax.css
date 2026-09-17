@@ -1,0 +1,139 @@
+.parallax-section {
+  position: relative;
+  display: grid;
+  min-height: clamp(300px, 34vw, 520px);
+  overflow: hidden;
+  place-items: center;
+  isolation: isolate;
+  background: #294837;
+}
+
+.parallax-section__image-wrapper,
+.parallax-section__overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.parallax-section__image-wrapper {
+  z-index: -2;
+  overflow: hidden;
+}
+.parallax-section__image {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 165%;
+  object-fit: cover;
+  object-position: center;
+  transform: translate3d(0, -50%, 0) scale(1.2);
+  will-change: transform;
+}
+.parallax-section__overlay {
+  z-index: -1;
+  background: linear-gradient(
+    90deg,
+    rgba(12, 43, 30, 0.48),
+    rgba(13, 49, 33, 0.35) 50%,
+    rgba(12, 43, 30, 0.5)
+  );
+}
+
+.parallax-section__quote {
+  width: min(88%, 780px);
+  margin: 0;
+  padding: 2rem 0;
+  color: #fffdf6;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: clamp(0.7rem, 1.2vw, 1.2rem);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+  text-align: center;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.16);
+}
+
+.parallax-section__quote p {
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .parallax-section {
+    min-height: 550px;
+  }
+
+  .parallax-section__image {
+    width: 140%;
+    max-width: none;
+    height: calc(100% + 240px);
+    margin-left: -20%;
+    object-position: 53% center;
+    transform: translate3d(0, -120px, 0) scale(1.05);
+  }
+
+  .parallax-section__quote {
+     font-size: clamp(0.5rem, 5vw, 1rem);
+    line-height: 1.25;
+  }
+}
+
+
+@media (max-width: 700px) {
+  .parallax-section {
+    min-height: 400px;
+  }
+
+  .parallax-section__image {
+    width: 140%;
+    max-width: none;
+    height: calc(100% + 240px);
+    margin-left: -20%;
+    object-position: 53% center;
+    transform: translate3d(0, -120px, 0) scale(1.05);
+  }
+
+  .parallax-section__quote {
+     font-size: clamp(0.5rem, 5vw, 1rem);
+    line-height: 1.25;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .parallax-section__image {
+    height: 100%;
+    transform: none !important;
+    will-change: auto;
+  }
+}
+@media (max-width: 600px) {
+  .parallax-section {
+    min-height: 500px;
+  }
+
+  .parallax-section__image {
+    width: 140%;
+    max-width: none;
+    height: calc(100% + 240px);
+    margin-left: -20%;
+    object-position: 53% center;
+    transform: translate3d(0, -120px, 0) scale(1.05);
+  }
+
+  .parallax-section__quote {
+    font-size: clamp(0.5rem, 5vw, 1rem);
+    line-height: 1.25;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .parallax-section__image {
+    height: 100%;
+    transform: none !important;
+    will-change: auto;
+  }
+}
+
+
