@@ -49,6 +49,7 @@
 }
 
 .site-navigation__menu a {
+  cursor: pointer;
   padding: .58rem .72rem;
   border-radius: 999px;
   color: rgba(255, 255, 255, .77);

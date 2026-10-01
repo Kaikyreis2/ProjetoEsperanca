@@ -259,6 +259,55 @@ mapMarkers.forEach((marker) => {
   });
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const mapToggle = document.getElementById("map-layer-toggle");
+  const mapLayout = document.querySelector(".site-map__layout");
+  const mapPanel = document.querySelector(".map-panel");
+
+  if (!mapToggle || !mapLayout || !mapPanel) {
+    return;
+  }
+
+  mapToggle.addEventListener("click", () => {
+    const isActive =
+      mapToggle.getAttribute("aria-pressed") === "true";
+
+    // Entrando no modo mapa puro
+    if (isActive) {
+
+      // Guarda a altura atual do mapa ANTES de expandi-lo
+      const currentHeight = mapPanel.getBoundingClientRect().height;
+
+      mapPanel.style.height = `${currentHeight}px`;
+
+      mapLayout.classList.add("is-map-only");
+
+      mapToggle.setAttribute("aria-pressed", "false");
+
+      mapToggle.setAttribute(
+        "aria-label",
+        "Mostrar pontos interativos do mapa"
+      );
+
+    } 
+    // Voltando para o modo interativo
+    else {
+
+      mapLayout.classList.remove("is-map-only");
+
+      // Retira a altura fixa e devolve o comportamento original
+      mapPanel.style.height = "";
+
+      mapToggle.setAttribute("aria-pressed", "true");
+
+      mapToggle.setAttribute(
+        "aria-label",
+        "Ocultar pontos interativos do mapa"
+      );
+    }
+  });
+});
+
 /*WHATSAPP*/
 const openWhatsappModalButton = document.querySelector("#open-whatsapp-modal");
 const whatsappModal = document.querySelector("#whatsapp-modal");
@@ -668,15 +717,27 @@ const galleryAlbums = {
     title: "Lagos",
     photos: [
       {
-        src: "/assets/img/lake/lake1.png",
+        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790290231/Lago3.1_uvvzgm.png",
         alt: "Lago do sítio ao entardecer"
       },
       {
-        src: "/assets/img/lake/lake2.png",
+        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790290230/Lago5_uc21re.png",
         alt: "Vista do lago lateral do sítio"
       },
       {
-        src: "/assets/img/lake/lake3.png",
+        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790290229/Lago2_lsltcs.png",
+        alt: "Área verde próxima aos lagos"
+      },
+      {
+        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790290227/Lago2.1_x1q4r4.png",
+        alt: "Vista do lago lateral do sítio"
+      },
+      {
+        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790290227/Lago3_miaami.png",
+        alt: "Área verde próxima aos lagos"
+      },
+      {
+        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790290221/Lago4_p0l6yx.png",
         alt: "Área verde próxima aos lagos"
       }
     ]
@@ -712,15 +773,31 @@ const galleryAlbums = {
     title: "Salão Principal",
     photos: [
       {
-        src: "/assets/img/main-hall/main-hall.png",
+        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790291488/VistaAreaCentral3_dqyh8y.png",
         alt: "Salão Principal preparado para evento"
       },
       {
-        src: "/assets/img/main-hall/main-hall2.png",
+        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790291488/VistaAreaCentral3_dqyh8y.png",
         alt: "Mesas montadas no Salão Principal"
       },
       {
-        src: "/assets/img/main-hall/main-hall3.png",
+        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790291027/CozinhaIndustrial_elsqqf.png",
+        alt: "Vista interna do Salão Principal"
+      },
+      {
+        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790291024/CozinhaIndustrial3_t6ex7d.png",
+        alt: "Salão Principal preparado para evento"
+      },
+      {
+        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790290973/DormitorioESaladeRefeicoesAreaCentral_dex0ms.png",
+        alt: "Mesas montadas no Salão Principal"
+      },
+      {
+        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790290949/DormitorioAreaCentral_qnywe0.png",
+        alt: "Vista interna do Salão Principal"
+      },
+      {
+        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790290931/BanheiroExteriorSalaoPrincipal_xeslnp.png",
         alt: "Vista interna do Salão Principal"
       }
     ]
@@ -730,24 +807,12 @@ const galleryAlbums = {
     title: "Salão de Reuniões",
     photos: [
       {
-        src: "/assets/img/main-hall/main-hall2.png",
+        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790291374/EntradaSalaoDeReuniao_gqsgr9.png",
         alt: "Salão de Reuniões com mesa de madeira"
       },
       {
-        src: "/assets/img/meeting-hall/meeting-hall2.png",
+        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790291371/SalaoDeReuniao_scghcj.png",
         alt: "Ambiente preparado para encontro corporativo"
-      },
-      {
-        src: "/assets/img/meeting-hall/meeting-hall3.png",
-        alt: "Vista interna da área de reuniões"
-      },
-      {
-        src: "/assets/img/meeting-hall/meeting-hall4.png",
-        alt: "Detalhe da estrutura do Salão de Reuniões"
-      },
-      {
-        src: "/assets/img/meeting-hall/meeting-hall5.png",
-        alt: "Salão de Reuniões organizado para convidados"
       }
     ]
   }
@@ -931,13 +996,28 @@ function renderGalleryPhotos(category) {
       return `
         <figure class="gallery-carousel__item">
           <img
-            src="${photo.src}"
-            alt="${photo.alt}"
-            loading="${loading}"
-            decoding="async"
-            width="1200"
-            height="900"
-          />
+          src="${photo.src}"
+          srcset="
+            ${photo.src.replace('/upload/', '/upload/f_auto,q_auto,w_480/')} 480w,
+            ${photo.src.replace('/upload/', '/upload/f_auto,q_auto,w_768/')} 768w,
+            ${photo.src.replace('/upload/', '/upload/f_auto,q_auto,w_1024/')} 1024w,
+            ${photo.src.replace('/upload/', '/upload/f_auto,q_auto,w_1440/')} 1440w,
+            ${photo.src.replace('/upload/', '/upload/f_auto,q_auto,w_1920/')} 1920w,
+            ${photo.src.replace('/upload/', '/upload/f_auto,q_auto,w_2560/')} 2560w
+          "
+          sizes="
+            (max-width: 480px) 100vw,
+            (max-width: 768px) 100vw,
+            (max-width: 1024px) 100vw,
+            (max-width: 1440px) 100vw,
+            100vw
+          "
+          alt="${photo.alt}"
+          loading="${loading}"
+          decoding="async"
+          width="1200"
+          height="900"
+        />
 
           <figcaption class="gallery-carousel__caption">
             ${photo.albumTitle} · Foto ${photo.photoNumber}

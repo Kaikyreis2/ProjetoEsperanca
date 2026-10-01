@@ -24,10 +24,63 @@
   grid-template-columns: minmax(0, 1.25fr) minmax(300px, .93fr);
   gap: clamp(1.25rem, 3vw, 2.5rem);
 }
+/* Estado normal */
+.site-map__layout {
+  position: relative;
+}
+
+/* =========================
+   MODO MAPA PURO
+   ========================= */
+
+/* Esconde todos os tipos de marcador */
+.site-map__layout.is-map-only .map-marker,
+.site-map__layout.is-map-only .location-map__marker {
+  display: none !important;
+}
+
+.site-map__layout {
+  position: relative;
+  display: grid;
+  margin-top: clamp(2rem, 4vw, 3.25rem);
+  grid-template-columns: minmax(0, 1.25fr) minmax(300px, .93fr);
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+
+/* =========================
+   MODO MAPA PURO
+   ========================= */
+
+.site-map__layout.is-map-only .map-marker,
+.site-map__layout.is-map-only .location-map__marker {
+  display: none !important;
+}
+
+.site-map__layout.is-map-only .map-details {
+  display: none;
+}
+
+.site-map__layout.is-map-only .map-panel {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+/* Mantém a imagem preenchendo a altura definida pelo painel */
+.site-map__layout.is-map-only .map-panel__image {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+
+/* =========================
+   PAINEL DO MAPA
+   ========================= */
 
 .map-panel {
   position: relative;
-  min-height: 395px;
+  width: 100%;
   overflow: hidden;
   border-radius: 1.5rem;
   background: #d9e9c7;
@@ -35,12 +88,9 @@
 }
 
 .map-panel__image {
-  position: absolute;
-  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
 }
 
 .map-panel__label {
@@ -55,63 +105,271 @@
   letter-spacing: .22em;
   text-transform: uppercase;
 }
+/* =========================================================
+   TOGGLE DO MAPA
+   ========================================================= */
 
-.map-marker {
+.location-map__toggle {
   position: absolute;
-  z-index: 3;
-  top: var(--map-y);
-  left: var(--map-x);
+  bottom: 1.35rem;
+  left: 1.35rem;
+  z-index: 5;
+
   display: flex;
   align-items: center;
-  flex-direction: column;
-  gap: .4rem;
+  justify-content: center;
+
+  width: 48px;
+  height: 26px;
   padding: 0;
+
   border: 0;
+  border-radius: 999px;
+
   background: transparent;
-  color: #fff;
+
   cursor: pointer;
-  transform: translate(-50%, -50%);
 }
+
+/* Trilho */
+
+.location-map__toggle-track {
+  position: relative;
+
+  display: block;
+
+  width: 48px;
+  height: 26px;
+
+  border-radius: 999px;
+
+  background: rgba(18, 63, 42, 0.28);
+
+  box-shadow:
+    inset 0 1px 2px rgba(18, 48, 32, 0.18),
+    0 2px 6px rgba(18, 48, 32, 0.12);
+
+  transition:
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* Bolinha */
+
+.location-map__toggle-thumb {
+  position: absolute;
+
+  top: 3px;
+  left: 3px;
+
+  width: 20px;
+  height: 20px;
+
+  border-radius: 50%;
+
+  background: #fffdf6;
+
+  box-shadow:
+    0 2px 5px rgba(18, 48, 32, 0.22);
+
+  transition:
+    transform 0.25s ease;
+}
+
+/* =========================================================
+   ESTADO ATIVO
+   ========================================================= */
+
+.location-map__toggle[aria-pressed="true"]
+.location-map__toggle-track {
+  background: #cf7d4d;
+}
+
+.location-map__toggle[aria-pressed="true"]
+.location-map__toggle-thumb {
+  transform: translateX(22px);
+}
+
+/* =========================================================
+   ESTADO DESATIVADO
+   ========================================================= */
+
+.location-map__toggle[aria-pressed="false"]
+.location-map__toggle-track {
+  background: rgba(18, 63, 42, 0.18);
+}
+
+.location-map__toggle[aria-pressed="false"]
+.location-map__toggle-thumb {
+  transform: translateX(0);
+}
+
+/* =========================================================
+   FOCO
+   ========================================================= */
+
+.location-map__toggle:focus-visible {
+  outline: 2px solid #cf7d4d;
+  outline-offset: 4px;
+}
+/* =========================================================
+   MARCADORES DO MAPA
+   ========================================================= */
+
+.map-marker {
+    position: absolute;
+    top: var(--map-y);
+    left: var(--map-x);
+    z-index: 3;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+    padding: 0;
+
+    border: 2px solid rgba(255, 253, 246, 0.95);
+    border-radius: 50%;
+
+    background: #cf7d4d;
+    color: #fffdf6;
+
+    cursor: pointer;
+
+    transform: translate(-50%, -50%);
+
+    box-shadow:
+        0 3px 8px rgba(18, 48, 32, 0.22),
+        0 1px 2px rgba(18, 48, 32, 0.18);
+
+    transition:
+        transform 180ms ease,
+        background-color 180ms ease,
+        box-shadow 180ms ease;
+}
+
+/* Ícone interno */
 
 .map-marker__icon {
-  display: grid;
-  width: 45px;
-  height: 45px;
-  place-items: center;
-  border: 1px solid rgba(255, 255, 255, .15);
-  border-radius: 50%;
-  background: #163f2b;
-  box-shadow: 0 5px 12px rgba(12, 52, 32, .2);
-  font-size: 1.25rem;
-  line-height: 1;
-  transition: background-color .18s ease, transform .18s ease;
+    display: grid;
+    place-items: center;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+    border-radius: 50%;
+
+    background: transparent;
+    color: #fffdf6;
+
+    font-size: 0.85rem;
+    font-weight: 600;
+
+    line-height: 1;
+
+    transition:
+        transform 180ms ease,
+        color 180ms ease;
 }
 
-.map-marker__name {
-  padding: .32rem .68rem;
-  border-radius: .8rem;
-  background: rgba(255, 254, 246, .9);
-  color: #365944;
-  font-family: var(--font-body, Arial, sans-serif);
-  font-size: .63rem;
-  font-weight: 600;
-  white-space: nowrap;
-  box-shadow: 0 2px 7px rgba(20, 54, 33, .08);
+/* Pequeno halo ao redor, sem criar um segundo ponto */
+
+.map-marker::before {
+    position: absolute;
+    inset: -5px;
+
+    content: "";
+
+    border: 1px solid rgba(255, 253, 246, 0.38);
+    border-radius: 50%;
+
+    opacity: 0;
+
+    transform: scale(0.85);
+
+    transition:
+        opacity 180ms ease,
+        transform 180ms ease;
+
+    pointer-events: none;
 }
 
-.map-marker:hover .map-marker__icon,
-.map-marker.is-active .map-marker__icon {
-  background: #2d754a;
-  transform: scale(1.12);
+/* Hover */
+
+.map-marker:hover {
+    background: #b9683d;
+
+    transform: translate(-50%, -50%) scale(1.08);
+
+    box-shadow:
+        0 5px 14px rgba(18, 48, 32, 0.28),
+        0 2px 4px rgba(18, 48, 32, 0.18);
+}
+
+.map-marker:hover::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.map-marker:hover .map-marker__icon {
+    transform: scale(1.04);
+}
+
+/* Foco para teclado */
+
+.map-marker:focus-visible {
+    outline: none;
+}
+
+.map-marker:focus-visible::before {
+    opacity: 1;
+    transform: scale(1);
 }
 
 .map-marker:focus-visible {
-  outline: none;
+    box-shadow:
+        0 0 0 3px rgba(255, 253, 246, 0.85),
+        0 5px 14px rgba(18, 48, 32, 0.28);
 }
 
-.map-marker:focus-visible .map-marker__icon {
-  outline: 3px solid #fff;
-  outline-offset: 4px;
+/* Nome do local */
+
+.map-marker__name {
+    display: none;
+
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+
+    margin: 0;
+    padding: 0.35rem 0.65rem;
+
+    border-radius: 0.65rem;
+
+    background: rgba(255, 254, 246, 0.96);
+    color: #365944;
+
+    font-family: var(--font-body, Arial, sans-serif);
+    font-size: 0.63rem;
+    font-weight: 600;
+
+    line-height: 1.2;
+    white-space: nowrap;
+
+    box-shadow:
+        0 3px 10px rgba(20, 54, 33, 0.12);
+
+    transform: translateX(-50%);
+}
+
+/* Mostrar nome somente quando necessário */
+
+.map-marker:hover .map-marker__name,
+.map-marker:focus-visible .map-marker__name {
+    display: block;
 }
 
 .map-details {
@@ -158,7 +416,7 @@
   .site-map__header { grid-template-columns: 1fr; gap: 1rem; }
   .site-map__header p { margin: 0; }
   .site-map__layout { grid-template-columns: 1fr 0.7fr; }
-  .map-panel { min-height: min(45vw, 460px); }
+  
   .map-details {
   max-width: 100%;
   max-height: 200px;
@@ -173,7 +431,7 @@
   .site-map__header { grid-template-columns: 1fr; gap: 1rem; }
   .site-map__header p { margin: 0; }
   .site-map__layout { grid-template-columns: 1fr; }
-  .map-panel { min-height: min(70vw, 460px); }
+  
   .map-details { min-height: 0; }
   .map-details img { min-height: 250px; flex: none; }
   .map-details__description { display: block; }
@@ -201,10 +459,7 @@
     font-size: 0.55rem;
   }
 
-  .map-panel {
-    min-height: min(80vw, 460px);
-  }
-
+  
   .map-details {
     width: 100%;
     max-width: 100%;
