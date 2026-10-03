@@ -33,7 +33,7 @@
   <body>
     <header class="site-navigation" id="site-navigation">
       <nav class="site-navigation__inner" aria-label="Navegação principal">
-        <a class="site-navigation__brand" href="#top" aria-label="Projeto Esperança - início">
+        <a class="site-navigation__brand" data-target="home" aria-label="Projeto Esperança - início">
           Projeto Esperança
         </a>
 
@@ -51,19 +51,19 @@
         </button>
 
         <div class="site-navigation__menu" id="navigation-menu">
-          <a>Tour guiado</a>
-          <a >Galeria</a>
-          <a >Ambientes</a>
-          <a >Eventos</a>
-          <a >Comentários</a>
-          <a >Mapa</a>
-          <a>Como chegar</a>
+          <a data-target="guided-tour">Tour guiado</a>
+          <a data-target="gallery">Galeria</a>
+          <a data-target="spaces">Ambientes</a>
+          <a data-target="map">Mapa</a>
+          <a data-target="events">Eventos</a>
+          <a data-target="social">Redes Sociais</a>
+          <a data-target="location">Como chegar</a>
         </div>
       </nav>
     </header>
 
     <main>
-      <section class="hero" aria-labelledby="main-title">
+      <section class="hero"  id="home" aria-labelledby="main-title">
   <video
     class="hero__video"
     id="hero-video"
@@ -137,7 +137,6 @@
 
   <a
     class="hero__scroll-indicator"
-    href="#next-section"
     aria-label="Ir para a próxima seção"
   >
     <span>Conheça o espaço</span>
@@ -213,7 +212,7 @@
               <span class="tour-card__details">
                 <span class="tour-card__meta"><time datetime="PT0S">00:00</time><span>NO AR</span></span>
                 <strong>Salão Principal</strong>
-                <small><span aria-hidden="true">♧</span> Até 220 convidados</small>
+                <small>Até 220 convidados</small>
               </span>
             </button>
 
@@ -247,8 +246,7 @@
               <span class="tour-card__details">
                 <span class="tour-card__meta"><time datetime="PT15S">00:15</time></span>
                 <strong>Área de Lazer</strong>
-                <small><span aria-hidden="true">♧</span> Até 60 pessoas</small>
-              </span>
+                <small>Área para lazer e recreação</small>
             </button>
 
             <button class="tour-card" type="button" data-time="35" aria-pressed="false">
@@ -281,7 +279,7 @@
               <span class="tour-card__details">
                 <span class="tour-card__meta"><time datetime="PT35S">00:35</time></span>
                 <strong>Acomodações</strong>
-                <small><span aria-hidden="true">♧</span> Até 40 hóspedes</small>
+                <small>Até 60 convidados</small>
               </span>
             </button>
 
@@ -315,6 +313,7 @@
               <span class="tour-card__details">
                 <span class="tour-card__meta"><time datetime="PT55S">00:55</time></span>
                 <strong>Lagos</strong>
+                <small>Espaço de relaxar e observar a vista</small>
               </span>
             </button>
 
@@ -348,7 +347,7 @@
               <span class="tour-card__details">
                 <span class="tour-card__meta"><time datetime="PT1M15S">01:15</time></span>
                 <strong>Área Verde</strong>
-                <small><span aria-hidden="true">♧</span> Cerimônias ao ar livre</small>
+                <small><span aria-hidden="true"></span> Cerimônias ao ar livre</small>
               </span>
             </button>
 
@@ -382,7 +381,7 @@
               <span class="tour-card__details">
                 <span class="tour-card__meta"><time datetime="PT1M15S">02:15</time></span>
                 <strong>Salão de Reunião</strong>
-                <small><span aria-hidden="true">♧</span> Espaço para reuniões e eventos</small>
+                <small> Espaço para reuniões e eventos</small>
               </span>
             </button>
             <button class="tour-card" type="button" data-time="75" aria-pressed="false">
@@ -415,7 +414,7 @@
               <span class="tour-card__details">
                 <span class="tour-card__meta"><time datetime="PT1M15S">02:15</time></span>
                 <strong>Áreas Recreativas</strong>
-                <small><span aria-hidden="true">♧</span>Espaços para atividades recreativas</small>
+                <small>Espaços para atividades recreativas</small>
               </span>
             </button>
             <button class="tour-card" type="button" data-time="75" aria-pressed="false">
@@ -448,7 +447,7 @@
               <span class="tour-card__details">
                 <span class="tour-card__meta"><time datetime="PT1M15S">02:15</time></span>
                 <strong>Tratamento com Animais</strong>
-                <small><span aria-hidden="true">♧</span>Espaçode contato com animais e para cuidar do seu Pet</small>
+                <small>Espaço de contato com animais e para cuidar do seu Pet</small>
               </span>
             </button>
           </div>
@@ -530,13 +529,45 @@
           <a class="gallery-album gallery-album--tall"  data-category="rooms" aria-label="Filtrar galeria por Quartos, com 3 fotos">
             <img  src="/assets/img/room/room1.png" alt="Quarto confortável do sítio" loading="lazy" />
             <span class="gallery-album__shade" aria-hidden="true"></span>
-            <span class="gallery-album__content"><strong>Acomodacoes</strong><small><span aria-hidden="true">▧</span> 3 fotos</small></span>
+            <span class="gallery-album__content"><strong>Acomodacoes</strong><small><span aria-hidden="true"><span class="eyebrow__icon" aria-hidden="true">
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                >
+                  <rect x="3" y="5" width="14" height="14" rx="2"></rect>
+                  <path d="m5.5 16 3.5-3.5 2.5 2.5 1.5-1.5 2.5 2.5"></path>
+                  <circle cx="12.5" cy="9.5" r="1.25"></circle>
+                  <path d="M7 3h12a2 2 0 0 1 2 2v12"></path>
+                </svg>
+              </span></span> 3 fotos</small></span>
           </a>
 
           <a class="gallery-album gallery-album--tall"  data-category="parking" aria-label="Filtrar galeria por Estacionamento, com 3 fotos">
             <img src="/assets/img/parker/parker1.png" alt="Estacionamento amplo e gramado" loading="lazy" />
             <span class="gallery-album__shade" aria-hidden="true"></span>
-            <span class="gallery-album__content"><strong>Estacionamento</strong><small><span aria-hidden="true">▧</span> 3 fotos</small></span>
+            <span class="gallery-album__content"><strong>Estacionamento</strong><small><span aria-hidden="true"><span class="eyebrow__icon" aria-hidden="true">
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                >
+                  <rect x="3" y="5" width="14" height="14" rx="2"></rect>
+                  <path d="m5.5 16 3.5-3.5 2.5 2.5 1.5-1.5 2.5 2.5"></path>
+                  <circle cx="12.5" cy="9.5" r="1.25"></circle>
+                  <path d="M7 3h12a2 2 0 0 1 2 2v12"></path>
+                </svg>
+              </span></span> 3 fotos</small></span>
           </a>
 
           <a class="gallery-album gallery-album--tall"  data-category="pool" aria-label="Filtrar galeria por Piscina, com 5 fotos">
@@ -562,7 +593,23 @@
               height="900"
             />
             <span class="gallery-album__shade" aria-hidden="true"></span>
-            <span class="gallery-album__content"><strong>Area de Lazer</strong><small><span aria-hidden="true">▧</span> 5 fotos</small></span>
+            <span class="gallery-album__content"><strong>Area de Lazer</strong><small><span aria-hidden="true"><span class="eyebrow__icon" aria-hidden="true">
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                >
+                  <rect x="3" y="5" width="14" height="14" rx="2"></rect>
+                  <path d="m5.5 16 3.5-3.5 2.5 2.5 1.5-1.5 2.5 2.5"></path>
+                  <circle cx="12.5" cy="9.5" r="1.25"></circle>
+                  <path d="M7 3h12a2 2 0 0 1 2 2v12"></path>
+                </svg>
+              </span></span> 5 fotos</small></span>
           </a>
 
           <a class="gallery-album gallery-album--tall"  data-category="lakes" aria-label="Filtrar galeria por Lagos, com 3 fotos">
@@ -588,7 +635,23 @@
               height="900"
             />
             <span class="gallery-album__shade" aria-hidden="true"></span>
-            <span class="gallery-album__content"><strong>Lagos</strong><small><span aria-hidden="true">▧</span> 3 fotos</small></span>
+            <span class="gallery-album__content"><strong>Lagos</strong><small><span aria-hidden="true"><span class="eyebrow__icon" aria-hidden="true">
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                >
+                  <rect x="3" y="5" width="14" height="14" rx="2"></rect>
+                  <path d="m5.5 16 3.5-3.5 2.5 2.5 1.5-1.5 2.5 2.5"></path>
+                  <circle cx="12.5" cy="9.5" r="1.25"></circle>
+                  <path d="M7 3h12a2 2 0 0 1 2 2v12"></path>
+                </svg>
+              </span></span> 3 fotos</small></span>
           </a>
 
           <a class="gallery-album gallery-album--tall"  data-category="bathrooms" aria-label="Filtrar galeria por Banheiros, com 5 fotos">
@@ -614,7 +677,23 @@
               height="900"
             />
             <span class="gallery-album__shade" aria-hidden="true"></span>
-            <span class="gallery-album__content"><strong>Area Recreativa</strong><small><span aria-hidden="true">▧</span> 5 fotos</small></span>
+            <span class="gallery-album__content"><strong>Area Recreativa</strong><small><span aria-hidden="true"><span class="eyebrow__icon" aria-hidden="true">
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                >
+                  <rect x="3" y="5" width="14" height="14" rx="2"></rect>
+                  <path d="m5.5 16 3.5-3.5 2.5 2.5 1.5-1.5 2.5 2.5"></path>
+                  <circle cx="12.5" cy="9.5" r="1.25"></circle>
+                  <path d="M7 3h12a2 2 0 0 1 2 2v12"></path>
+                </svg>
+              </span></span> 5 fotos</small></span>
           </a>
 
           <a class="gallery-album gallery-album--tall"  data-category="main-hall" aria-label="Filtrar galeria por Salão Principal, com 3 fotos">
@@ -640,7 +719,23 @@
               height="900"
             />
             <span class="gallery-album__shade" aria-hidden="true"></span>
-            <span class="gallery-album__content"><strong>Salão Principal</strong><small><span aria-hidden="true">▧</span> 3 fotos</small></span>
+            <span class="gallery-album__content"><strong>Salão Principal</strong><small><span aria-hidden="true"><span class="eyebrow__icon" aria-hidden="true">
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                >
+                  <rect x="3" y="5" width="14" height="14" rx="2"></rect>
+                  <path d="m5.5 16 3.5-3.5 2.5 2.5 1.5-1.5 2.5 2.5"></path>
+                  <circle cx="12.5" cy="9.5" r="1.25"></circle>
+                  <path d="M7 3h12a2 2 0 0 1 2 2v12"></path>
+                </svg>
+              </span></span> 3 fotos</small></span>
           </a>
 
           <a class="gallery-album gallery-album--tall"  data-category="meeting-hall" aria-label="Filtrar galeria por Salão de Reuniões, com 5 fotos">
@@ -666,7 +761,23 @@
               height="900"
             />
             <span class="gallery-album__shade" aria-hidden="true"></span>
-            <span class="gallery-album__content"><strong>Salão de Reuniões</strong><small><span aria-hidden="true">▧</span> 5 fotos</small></span>
+            <span class="gallery-album__content"><strong>Salão de Reuniões</strong><small><span aria-hidden="true"><span class="eyebrow__icon" aria-hidden="true">
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                >
+                  <rect x="3" y="5" width="14" height="14" rx="2"></rect>
+                  <path d="m5.5 16 3.5-3.5 2.5 2.5 1.5-1.5 2.5 2.5"></path>
+                  <circle cx="12.5" cy="9.5" r="1.25"></circle>
+                  <path d="M7 3h12a2 2 0 0 1 2 2v12"></path>
+                </svg>
+              </span></span> 5 fotos</small></span>
           </a>
 
           <a class="gallery-album gallery-album--tall"  data-category="meeting-hall" aria-label="Filtrar galeria por Salão de Reuniões, com 5 fotos">
@@ -692,7 +803,23 @@
               height="900"
             />
             <span class="gallery-album__shade" aria-hidden="true"></span>
-            <span class="gallery-album__content"><strong>Area Verde</strong><small><span aria-hidden="true">▧</span> 5 fotos</small></span>
+            <span class="gallery-album__content"><strong>Area Verde</strong><small><span aria-hidden="true"><span class="eyebrow__icon" aria-hidden="true">
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                >
+                  <rect x="3" y="5" width="14" height="14" rx="2"></rect>
+                  <path d="m5.5 16 3.5-3.5 2.5 2.5 1.5-1.5 2.5 2.5"></path>
+                  <circle cx="12.5" cy="9.5" r="1.25"></circle>
+                  <path d="M7 3h12a2 2 0 0 1 2 2v12"></path>
+                </svg>
+              </span></span> 5 fotos</small></span>
           </a>
         </div>
 
@@ -763,7 +890,7 @@
         </blockquote>
       </section>
       
-      <section class="interactive-tour section" id="interactive-tour" aria-labelledby="interactive-tour-title">
+      <section class="interactive-tour section" id="spaces" aria-labelledby="interactive-tour-title">
         <div class="section-header">
             <p class="eyebrow">
               <span class="eyebrow__icon" aria-hidden="true">
@@ -798,22 +925,14 @@
         <div class="tour-tabs" role="tablist" aria-label="Escolha um ambiente">
           <button class="tour-tab is-active" type="button" role="tab" aria-selected="true" data-space="main-hall">
             <span class="tour-tab__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="8.5" cy="14" r="4.5"></circle>
-                <circle cx="15.5" cy="10" r="4.5"></circle>
-                <path d="m12 7.5 1.1 1.1L14.8 7"></path>
-              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gem preview-icon"><path d="M10.5 3 8 9l4 13 4-13-2.5-6"/><path d="M17 3a2 2 0 0 1 1.6.8l3 4a2 2 0 0 1 .013 2.382l-7.99 10.986a2 2 0 0 1-3.247 0l-7.99-10.986A2 2 0 0 1 2.4 7.8l2.998-3.997A2 2 0 0 1 7 3z"/><path d="M2 9h20"/></svg>
             </span>
             <span>Casamento</span>
           </button>
 
           <button class="tour-tab" type="button" role="tab" aria-selected="false" data-space="rooms">
             <span class="tour-tab__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 21c-3.5-2.9-7-5.6-7-10a3.5 3.5 0 0 1 6-2.45A3.5 3.5 0 0 1 17 11c0 4.4-3.5 7.1-5 10Z"></path>
-                <path d="M12 4v3M8.2 5.1l1.5 2.6M15.8 5.1l-1.5 2.6"></path>
-                <path d="M19 5.5h.01M20 9h.01"></path>
-              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cake preview-icon"><path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"/><path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1"/><path d="M2 21h20"/><path d="M7 8v3"/><path d="M12 8v3"/><path d="M17 8v3"/><path d="M7 4h.01"/><path d="M12 4h.01"/><path d="M17 4h.01"/></svg>
             </span>
             <span>Aniversário</span>
           </button>
@@ -828,7 +947,12 @@
             </span>
             <span>Retiro</span>
           </button>
-
+          <button class="tour-tab" type="button" role="tab" aria-selected="false" data-space="lake-garden">
+            <span class="tour-tab__icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round-group preview-icon"><path d="M17 21a5 5 0 00-10 0"/><path d="M22 10.5a3.5 3.5 0 00-5.507-2.868"/><path d="M7.507 7.632A3.5 3.5 0 002 10.5"/><circle cx="12" cy="13" r="3"/><circle cx="18.5" cy="4.5" r="2.5"/><circle cx="5.5" cy="4.5" r="2.5"/></svg>
+            </span>
+            <span>Confraternização</span>
+          </button>
           <button class="tour-tab" type="button" role="tab" aria-selected="false" data-space="barbecue">
             <span class="tour-tab__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -859,7 +983,7 @@
             <span class="image-comparison__label image-comparison__label--after">Depois</span>
 
             <div class="image-comparison__divider" id="comparison-divider" aria-hidden="true">
-              <span>↔</span>
+              <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-horizontal preview-icon"><path d="m18 8 4 4-4 4"/><path d="M2 12h20"/><path d="m6 8-4 4 4 4"/></svg></span>
             </div>
 
             <label class="sr-only" for="comparison-range">Arraste para comparar as imagens antes e depois</label>
@@ -1049,7 +1173,7 @@
           </div>
       </section>
       
-      <section class="site-map section" id="site-map" aria-labelledby="site-map-title">
+      <section class="site-map section" id="map" aria-labelledby="site-map-title">
         <div class="section-header">
             <p class="eyebrow">
               <span class="eyebrow__icon" aria-hidden="true">
@@ -1083,33 +1207,76 @@
 
   <div class="site-map__layout">
     <div class="map-panel">
-      
+      <button
+          class="location-map__toggle"
+          id="map-layer-toggle"
+          type="button"
+          aria-label="Ocultar pontos interativos do mapa"
+          aria-pressed="true"
+        >
+          <span class="location-map__toggle-track" aria-hidden="true">
+
+            <span class="location-map__toggle-thumb">
+              <svg class = "location-map__toggle-icon location-map__toggle-icon--on"  xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye preview-icon"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
+
+              <svg
+                class="location-map__toggle-icon location-map__toggle-icon--off"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3 3L21 21"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M10.6 5.9C11.05 5.65 11.52 5.5 12 5.5C18 5.5 21.5 12 21.5 12C21.5 12 20.35 14.15 18.25 15.95"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M6.1 6.3C3.75 8.25 2.5 12 2.5 12C2.5 12 6 18.5 12 18.5C13.05 18.5 14.05 18.3 14.95 17.95"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+
+            </span>
+          </span>
+        </button>
       <p class="map-panel__label">Vista aérea ilustrada</p>
 
       <img
-        class="map-panel__image"
-        src="https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1600/v1790636475/Map4x3_az5cpk.png"
-        srcset="
-          https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_480/v1790636475/Map4x3_az5cpk.png 480w,
-          https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_768/v1790636475/Map4x3_az5cpk.png 768w,
-          https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790636475/Map4x3_az5cpk.png 1200w,
-          https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1600/v1790636475/Map4x3_az5cpk.png 1600w,
-          https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_2200/v1790636475/Map4x3_az5cpk.png 2200w
-        "
-        sizes="
-          (max-width: 600px) calc(100vw - 2rem),
-          (max-width: 1280px) calc(100vw - 3rem),
-          1280px
-        "
-        alt="Mapa ilustrado das áreas do Projeto Esperança"
-        width="1600"
-        height="1200"
-        loading="lazy"
-        decoding="async"
-      >
+  class="map-panel__image"
+  src="https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1600/v1790636475/Map4x3_az5cpk.png"
+  srcset="
+    https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_480/v1790636475/Map4x3_az5cpk.png 480w,
+    https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_768/v1790636475/Map4x3_az5cpk.png 768w,
+    https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790636475/Map4x3_az5cpk.png 1200w,
+    https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1600/v1790636475/Map4x3_az5cpk.png 1600w,
+    https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_2200/v1790636475/Map4x3_az5cpk.png 2200w
+  "
+  sizes="
+    (max-width: 600px) calc(100vw - 2rem),
+    (max-width: 1024px) calc(100vw - 3rem),
+    1024px
+  "
+  alt="Mapa ilustrado das áreas do Projeto Esperança"
+  width="1600"
+  height="1200"
+  loading="lazy"
+  decoding="async"
+>
+    >
 
        <button class="map-marker" type="button" data-space="pools" style="--map-x: 20%; --map-y: 27%;" aria-label="Ver detalhes das piscinas" aria-pressed="false">
-        <span class="map-marker__icon" aria-hidden="true">▱</span>
+        <span class="map-marker__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-waves-ladder preview-icon"><path d="M19 5a2 2 0 0 0-2 2v11"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M7 13h10"/><path d="M7 9h10"/><path d="M9 5a2 2 0 0 0-2 2v11"/></svg></span>
         <button
           class="location-map__marker"
           type="button"
@@ -1121,63 +1288,124 @@
         </button>
       </button>
       <button class="map-marker" type="button" data-space="gourmet-area" style="--map-x: 16%; --map-y: 10%;" aria-label="Ver detalhes da área gourmet" aria-pressed="false">
-        <span class="map-marker__icon" aria-hidden="true">▱</span>
+        <span class="map-marker__icon" aria-hidden="true">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-utensils preview-icon"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>        </span>
        
       </button>
       <button class="map-marker" type="button" data-space="field-sand" style="--map-x: 33%; --map-y: 20%;" aria-label="Ver detalhes do campo de areia" aria-pressed="false">
-        <span class="map-marker__icon" aria-hidden="true">▱</span>
+        <span class="map-marker__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-volleyball preview-icon"><path d="M11 7a16 16 20 0 1 10.98 4.362"/><path d="M12 12a13 13 0 0 1-8.66 5"/><path d="M16.83 13.634a16 16 0 0 1-9.267 7.328"/><path d="M20.66 17A13 13 0 0 0 12 12a13 13 0 0 1 0-10"/><path d="M8.17 15.366a16 16 0 0 1-1.713-11.69"/><circle cx="12" cy="12" r="10"/></svg></span>
        
       </button>
        <button class="map-marker" type="button" data-space="soccer-field" style="--map-x: 20%; --map-y: 50%;" aria-label="Ver detalhes do campo de futebol" aria-pressed="false">
-        <span class="map-marker__icon" aria-hidden="true">▱</span>
+        <span class="map-marker__icon" aria-hidden="true"><svg
+  class="map-marker__icon"
+  viewBox="0 0 24 24"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+>
+  <rect
+    x="2.5"
+    y="4"
+    width="19"
+    height="16"
+    rx="1.2"
+    stroke="currentColor"
+    stroke-width="1.6"
+    stroke-linejoin="round"
+  />
+
+  <path
+    d="M12 4V20"
+    stroke="currentColor"
+    stroke-width="1.6"
+  />
+
+  <circle
+    cx="12"
+    cy="12"
+    r="2.8"
+    stroke="currentColor"
+    stroke-width="1.6"
+  />
+
+  <path
+    d="M2.5 8H6.2C6.65 8 7 8.35 7 8.8V15.2C7 15.65 6.65 16 6.2 16H2.5"
+    stroke="currentColor"
+    stroke-width="1.6"
+    stroke-linejoin="round"
+  />
+
+  <path
+    d="M21.5 8H17.8C17.35 8 17 8.35 17 8.8V15.2C17 15.65 17.35 16 17.8 16H21.5"
+    stroke="currentColor"
+    stroke-width="1.6"
+    stroke-linejoin="round"
+  />
+
+  <path
+    d="M2.5 10H4.5C4.78 10 5 10.22 5 10.5V13.5C5 13.78 4.78 14 4.5 14H2.5"
+    stroke="currentColor"
+    stroke-width="1.6"
+    stroke-linejoin="round"
+  />
+
+  <path
+    d="M21.5 10H19.5C19.22 10 19 10.22 19 10.5V13.5C19 13.78 19.22 14 19.5 14H21.5"
+    stroke="currentColor"
+    stroke-width="1.6"
+    stroke-linejoin="round"
+  />
+</svg></span>
         
       </button>
        <button class="map-marker" type="button" data-space="games-area" style="--map-x: 35%; --map-y: 43%;" aria-label="Ver detalhes da área de jogos" aria-pressed="false">
-        <span class="map-marker__icon" aria-hidden="true">▱</span>
+        <span class="map-marker__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gamepad-2 preview-icon"><line x1="6" x2="10" y1="11" y2="11"/><line x1="8" x2="8" y1="9" y2="13"/><line x1="15" x2="15.01" y1="12" y2="12"/><line x1="18" x2="18.01" y1="10" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/></svg></span>
         
       </button>
       <button class="map-marker" type="button" data-space="main-hall" style="--map-x: 45%; --map-y: 35%;" aria-label="Ver detalhes do salão principal" aria-pressed="false">
-        <span class="map-marker__icon" aria-hidden="true">▱</span>
+        <span class="map-marker__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house preview-icon"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>
         
       </button>
        <button class="map-marker" type="button" data-space="meeting-hall" style="--map-x: 8%; --map-y: 50%;" aria-label="Ver detalhes do salão de reunião" aria-pressed="false">
-        <span class="map-marker__icon" aria-hidden="true">▱</span>
+        <span class="map-marker__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-school preview-icon"><path d="M14 21v-3a2 2 0 0 0-4 0v3"/><path d="M18 4.933V21"/><path d="m4 6 7.106-3.79a2 2 0 0 1 1.788 0L20 6"/><path d="m6 11-3.52 2.147a1 1 0 0 0-.48.854V19a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a1 1 0 0 0-.48-.853L18 11"/><path d="M6 4.933V21"/><circle cx="12" cy="9" r="2"/></svg></span>
         
       </button>
       <button class="map-marker is-active" type="button" data-space="secondary-hall" style="--map-x: 55%; --map-y: 25%;" aria-label="Ver detalhes do salão secundário" aria-pressed="true">
-        <span class="map-marker__icon" aria-hidden="true">♧</span>
+        <span class="map-marker__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house preview-icon"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>
        
       </button>
       <button class="map-marker is-active" type="button" data-space="tertiary-room" style="--map-x: 65%; --map-y: 18%;" aria-label="Ver detalhes do quarto terciário" aria-pressed="true">
-        <span class="map-marker__icon" aria-hidden="true">♧</span>
+        <span class="map-marker__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house preview-icon"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>
    
       </button>
       <button class="map-marker" type="button" data-space="lake-four" style="--map-x: 69%; --map-y: 40%;" aria-label="Ver detalhes do lago 4" aria-pressed="false">
-        <span class="map-marker__icon" aria-hidden="true">≋</span>
+        <span class="map-marker__icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-paw-print preview-icon"><circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="20" cy="16" r="2"/><path d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z"/></svg></span>
       
       </button>
       <button class="map-marker" type="button" data-space="lake-four" style="--map-x: 75%; --map-y: 28%;" aria-label="Ver detalhes do lago 4" aria-pressed="false">
-        <span class="map-marker__icon" aria-hidden="true">≋</span>
+        <span class="map-marker__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-waves-horizontal preview-icon"><path d="M2 12q2.5 2 5 0t5 0 5 0 5 0"/><path d="M2 19q2.5 2 5 0t5 0 5 0 5 0"/><path d="M2 5q2.5 2 5 0t5 0 5 0 5 0"/></svg></span>
         
       </button>
       <button class="map-marker" type="button" data-space="lake-five" style="--map-x: 90%; --map-y: 20%;" aria-label="Ver detalhes do lago 5" aria-pressed="false">
-        <span class="map-marker__icon" aria-hidden="true">≋</span>
+        <span class="map-marker__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-waves-horizontal preview-icon"><path d="M2 12q2.5 2 5 0t5 0 5 0 5 0"/><path d="M2 19q2.5 2 5 0t5 0 5 0 5 0"/><path d="M2 5q2.5 2 5 0t5 0 5 0 5 0"/></svg></span>
         
       </button>
       <button class="map-marker" type="button" data-space="lake-two" style="--map-x: 40%; --map-y: 82%;" aria-label="Ver detalhes do lago 2" aria-pressed="false">
-        <span class="map-marker__icon" aria-hidden="true">≋</span>
+        <span class="map-marker__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-waves-horizontal preview-icon"><path d="M2 12q2.5 2 5 0t5 0 5 0 5 0"/><path d="M2 19q2.5 2 5 0t5 0 5 0 5 0"/><path d="M2 5q2.5 2 5 0t5 0 5 0 5 0"/></svg></span>
         
       </button>
       <button class="map-marker" type="button" data-space="lake-two" style="--map-x: 44%; --map-y: 68%;" aria-label="Ver detalhes do lago 2" aria-pressed="false">
-        <span class="map-marker__icon" aria-hidden="true">≋</span>
+        <span class="map-marker__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-waves-horizontal preview-icon"><path d="M2 12q2.5 2 5 0t5 0 5 0 5 0"/><path d="M2 19q2.5 2 5 0t5 0 5 0 5 0"/><path d="M2 5q2.5 2 5 0t5 0 5 0 5 0"/></svg></span>
         
       </button>
       <button class="map-marker" type="button" data-space="lake-three" style="--map-x: 55%; --map-y:70%;" aria-label="Ver detalhes do lago 3" aria-pressed="false">
-        <span class="map-marker__icon" aria-hidden="true">≋</span>
+        <span class="map-marker__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-waves-horizontal preview-icon"><path d="M2 12q2.5 2 5 0t5 0 5 0 5 0"/><path d="M2 19q2.5 2 5 0t5 0 5 0 5 0"/><path d="M2 5q2.5 2 5 0t5 0 5 0 5 0"/></svg></span>
         
       </button>
       <button class="map-marker" type="button" data-space="green-area" style="--map-x: 75%; --map-y: 65%;" aria-label="Ver detalhes da área verde" aria-pressed="false">
-        <span class="map-marker__icon" aria-hidden="true">≋</span>
+        <span class="map-marker__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trees preview-icon"><path d="M10 10v.2A3 3 0 0 1 8.9 16H5a3 3 0 0 1-1-5.8V10a3 3 0 0 1 6 0Z"/><path d="M7 16v6"/><path d="M13 19v3"/><path d="M12 19h8.3a1 1 0 0 0 .7-1.7L18 14h.3a1 1 0 0 0 .7-1.7L16 9h.2a1 1 0 0 0 .8-1.7L13 3l-1.4 1.5"/></svg></span>
        
       </button>
     </div>
@@ -1185,13 +1413,13 @@
     <article class="map-details" aria-live="polite">
       <p class="eyebrow" id="map-details-capacity">120 pessoas</p>
       <h3 id="map-details-title">Salão de Reuniões</h3>
-      <img id="map-details-image" src="/assets/img/main-hall/main-hall.png" alt="Salão de reuniões preparado para evento" />
+      <img id="map-details-image" src="/assets/img/main-hall/main-hall.png" decoding="async" alt="Salão de reuniões preparado para evento" />
       <p class="map-details__description" id="map-details-description">Um ambiente acolhedor para celebrações, encontros e reuniões em meio à natureza.</p>
     </article>
   </div>
       </section>
 
-      <section class="past-events section" id="past-events" aria-labelledby="past-events-title">
+      <section class="past-events section" id="events" aria-labelledby="past-events-title">
   <div class="section-header">
     <p class="eyebrow">Quem já viveu aqui</p>
     <h2 id="past-events-title" class="section-title">Eventos que já aconteceram no sítio</h2>
@@ -1205,7 +1433,23 @@
       <a class="event-card__image-link" href="/eventos/casamento-camila-rafael/" data-event-id="camila-rafael" aria-label="Ver detalhes do Casamento Camila e Rafael">
         <img src="/assets/img/lake/lake1.png" alt="Cerimônia de casamento montada no gramado do sítio" loading="lazy" />
         <span class="event-card__type">Casamento</span>
-        <span class="event-card__spaces">▧ 3 ambientes</span>
+        <span class="event-card__spaces"><span class="eyebrow__icon" aria-hidden="true">
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                >
+                  <rect x="3" y="5" width="14" height="14" rx="2"></rect>
+                  <path d="m5.5 16 3.5-3.5 2.5 2.5 1.5-1.5 2.5 2.5"></path>
+                  <circle cx="12.5" cy="9.5" r="1.25"></circle>
+                  <path d="M7 3h12a2 2 0 0 1 2 2v12"></path>
+                </svg>
+              </span> 3 ambientes</span>
       </a>
       <div class="event-card__content">
         <h3><a href="/eventos/casamento-camila-rafael/" data-event-id="camila-rafael">Casamento Camila &amp; Rafael</a></h3>
@@ -1315,7 +1559,7 @@
       </dialog>
       
       <section class="social-showcase section"
-                id="redes-sociais"
+                id="social"
                 aria-labelledby="social-showcase-title">
         <div class="section-header">
             <p class="eyebrow">
@@ -1699,7 +1943,7 @@
     <footer class="site-footer" id="location">
       <div class="site-footer__container">
         <header class="site-footer__header">
-          <p class="eyebrow"><span aria-hidden="true">⌖</span> Localização</p>
+          <p class="eyebrow"><span aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pinned preview-icon"><path d="M18 8c0 3.613-3.869 7.429-5.393 8.795a1 1 0 01-1.214 0C9.87 15.429 6 11.613 6 8a6 6 0 0112 0"/><path d="M4.474 15h-.197a1 1 0 00-.969.753l-1.097 4.35a1.5 1.5 0 001.444 1.898L20.344 22a1.5 1.5 0 001.446-1.897l-1.098-4.35a1 1 0 00-.969-.753h-.197"/><circle cx="12" cy="8" r="2"/></svg></span> Localização</p>
           <h2>Como chegar</h2>
         </header>
 

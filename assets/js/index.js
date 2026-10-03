@@ -197,60 +197,203 @@ const mapTitle = document.querySelector("#map-details-title");
 const mapImage = document.querySelector("#map-details-image");
 const mapDescription = document.querySelector("#map-details-description");
 
+
 const siteSpaces = {
-  rooms: {
-    capacity: "40 hóspedes",
-    title: "Quartos",
-    image: "/assets/img/room/room1.png",
-    alt: "Quarto confortável do sítio",
-    description: "Acomodações confortáveis para estender a experiência e descansar depois da celebração."
+  "pools": {
+    "name": "Piscinas",
+    "alt": "Ver detalhes das piscinas",
+    "description": "Área de piscinas integrada a um espaço de lazer em meio à natureza.",
+    "src": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290738/AreaDePiscinas_pwjpvu.png",
+    "srcset": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_480/v1790290738/AreaDePiscinas_pwjpvu.png 480w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_768/v1790290738/AreaDePiscinas_pwjpvu.png 768w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290738/AreaDePiscinas_pwjpvu.png 1200w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1600/v1790290738/AreaDePiscinas_pwjpvu.png 1600w",
+    "sizes": "(max-width: 1024px) 100vw, 50vw"
   },
+
+  "gourmet-area": {
+    "name": "Área gourmet",
+    "alt": "Ver detalhes da área gourmet",
+    "description": "Espaço para refeições, confraternizações e momentos de convivência.",
+    "src": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290736/AreaDaChurrasqueira_sphv9w.png",
+    "srcset": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_480/v1790290736/AreaDaChurrasqueira_sphv9w.png 480w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_768/v1790290736/AreaDaChurrasqueira_sphv9w.png 768w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290736/AreaDaChurrasqueira_sphv9w.png 1200w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1600/v1790290736/AreaDaChurrasqueira_sphv9w.png 1600w",
+    "sizes": "(max-width: 1024px) 100vw, 50vw"
+  },
+
+  "field-sand": {
+    "name": "Campo de areia",
+    "alt": "Ver detalhes do campo de areia",
+    "description": "Área de areia destinada a atividades esportivas e momentos de lazer.",
+    "src": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790291089/CampoDeAreia_wq1yox.png",
+    "srcset": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_480/v1790291089/CampoDeAreia_wq1yox.png 480w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_768/v1790291089/CampoDeAreia_wq1yox.png 768w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790291089/CampoDeAreia_wq1yox.png 1200w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1600/v1790291089/CampoDeAreia_wq1yox.png 1600w",
+    "sizes": "(max-width: 1024px) 100vw, 50vw"
+  },
+
+  "soccer-field": {
+    "name": "Campo de futebol",
+    "alt": "Ver detalhes do campo de futebol",
+    "description": "Campo gramado destinado à prática de futebol e atividades esportivas.",
+    "src": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790291090/CampoFutebol2_ui4l51.png",
+    "srcset": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_480/v1790291090/CampoFutebol2_ui4l51.png 480w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_768/v1790291090/CampoFutebol2_ui4l51.png 768w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790291090/CampoFutebol2_ui4l51.png 1200w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1600/v1790291090/CampoFutebol2_ui4l51.png 1600w",
+    "sizes": "(max-width: 1024px) 100vw, 50vw"
+  },
+
+  "games-area": {
+    "name": "Área de jogos",
+    "alt": "Ver detalhes da área de jogos",
+    "description": "Espaço destinado a jogos e atividades recreativas para os visitantes.",
+    "src": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790291149/SalaoDeJogos3_pxamzm.png",
+    "srcset": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_480/v1790291149/SalaoDeJogos3_pxamzm.png 480w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_768/v1790291149/SalaoDeJogos3_pxamzm.png 768w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790291149/SalaoDeJogos3_pxamzm.png 1200w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1600/v1790291149/SalaoDeJogos3_pxamzm.png 1600w",
+    "sizes": "(max-width: 1024px) 100vw, 50vw"
+  },
+
+  "main-hall": {
+    "name": "Salão principal",
+    "alt": "Ver detalhes do salão principal",
+    "description": "Ambiente amplo para celebrações, eventos e encontros.",
+    "src": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790291488/VistaAreaCentral3_dqyh8y.png",
+    "srcset": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_480/v1790291488/VistaAreaCentral3_dqyh8y.png 480w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_768/v1790291488/VistaAreaCentral3_dqyh8y.png 768w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790291488/VistaAreaCentral3_dqyh8y.png 1200w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1600/v1790291488/VistaAreaCentral3_dqyh8y.png 1600w",
+    "sizes": "(max-width: 1024px) 100vw, 50vw"
+  },
+
   "meeting-hall": {
-    capacity: "120 pessoas",
-    title: "Salão de Reuniões",
-    image: "/assets/img/main-hall/main-hall.png",
-    alt: "Salão de reuniões preparado para evento",
-    description: "Um ambiente acolhedor para celebrações, encontros e reuniões em meio à natureza."
+    "name": "Salão de reunião",
+    "alt": "Ver detalhes do salão de reunião",
+    "description": "Espaço reservado para reuniões, encontros e atividades em grupo.",
+    "src": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790291374/EntradaSalaoDeReuniao_gqsgr9.png",
+    "srcset": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_480/v1790291374/EntradaSalaoDeReuniao_gqsgr9.png 480w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_768/v1790291374/EntradaSalaoDeReuniao_gqsgr9.png 768w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790291374/EntradaSalaoDeReuniao_gqsgr9.png 1200w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1600/v1790291374/EntradaSalaoDeReuniao_gqsgr9.png 1600w",
+    "sizes": "(max-width: 1024px) 100vw, 50vw"
   },
+
+  "secondary-hall": {
+    "name": "Salão secundário",
+    "alt": "Ver detalhes do salão secundário",
+    "description": "Ambiente complementar para eventos, encontros e atividades do sítio.",
+    "src": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790291621/DormitorioSecundarioVistaFora_ksjyax.png",
+    "srcset": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_480/v1790291621/DormitorioSecundarioVistaFora_ksjyax.png 480w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_768/v1790291621/DormitorioSecundarioVistaFora_ksjyax.png 768w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790291621/DormitorioSecundarioVistaFora_ksjyax.png 1200w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1600/v1790291621/DormitorioSecundarioVistaFora_ksjyax.png 1600w",
+    "sizes": "(max-width: 1024px) 100vw, 50vw"
+  },
+
+  "tertiary-room": {
+    "name": "Quarto terciário",
+    "alt": "Ver detalhes do quarto terciário",
+    "description": "Acomodação destinada ao descanso e à hospedagem dos visitantes.",
+    "src": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790291617/QuartoComFrigobar_kpjtcy.png",
+    "srcset": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_480/v1790291617/QuartoComFrigobar_kpjtcy.png 480w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_768/v1790291617/QuartoComFrigobar_kpjtcy.png 768w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790291617/QuartoComFrigobar_kpjtcy.png 1200w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1600/v1790291617/QuartoComFrigobar_kpjtcy.png 1600w",
+    "sizes": "(max-width: 1024px) 100vw, 50vw"
+  },
+
+  "lake-four": [
+    {
+      "name": "Lago 4",
+      "alt": "Ver detalhes do lago 4",
+      "description": "Área de lago cercada por vegetação e integrada à paisagem natural.",
+      "src": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290230/Lago5_uc21re.png",
+      "srcset": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_480/v1790290230/Lago5_uc21re.png 480w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_768/v1790290230/Lago5_uc21re.png 768w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290230/Lago5_uc21re.png 1200w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1600/v1790290230/Lago5_uc21re.png 1600w",
+      "sizes": "(max-width: 1024px) 100vw, 50vw"
+    },
+    {
+      "name": "Lago 4",
+      "alt": "Ver detalhes do lago 4",
+      "description": "Área de lago cercada por vegetação e integrada à paisagem natural.",
+      "src": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290230/Lago5_uc21re.png",
+      "srcset": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_480/v1790290230/Lago5_uc21re.png 480w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_768/v1790290230/Lago5_uc21re.png 768w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290230/Lago5_uc21re.png 1200w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1600/v1790290230/Lago5_uc21re.png 1600w",
+      "sizes": "(max-width: 1024px) 100vw, 50vw"
+    }
+  ],
+
+  "lake-five": {
+    "name": "Lago 5",
+    "alt": "Ver detalhes do lago 5",
+    "description": "Lago inserido em uma área verde que valoriza o contato com a natureza.",
+    "src": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290221/Lago4_p0l6yx.png",
+    "srcset": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_480/v1790290221/Lago4_p0l6yx.png 480w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_768/v1790290221/Lago4_p0l6yx.png 768w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290221/Lago4_p0l6yx.png 1200w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1600/v1790290221/Lago4_p0l6yx.png 1600w",
+    "sizes": "(max-width: 1024px) 100vw, 50vw"
+  },
+
+  "lake-two": [
+    {
+      "name": "Lago 2",
+      "alt": "Ver detalhes do lago 2",
+      "description": "Espelho d'água cercado por áreas verdes e caminhos do sítio.",
+      "src": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290229/Lago2_lsltcs.png",
+      "srcset": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_480/v1790290229/Lago2_lsltcs.png 480w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_768/v1790290229/Lago2_lsltcs.png 768w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290229/Lago2_lsltcs.png 1200w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1600/v1790290229/Lago2_lsltcs.png 1600w",
+      "sizes": "(max-width: 1024px) 100vw, 50vw"
+    },
+    {
+      "name": "Lago 2",
+      "alt": "Ver detalhes do lago 2",
+      "description": "Espelho d'água cercado por áreas verdes e caminhos do sítio.",
+      "src": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290229/Lago2_lsltcs.png",
+      "srcset": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_480/v1790290229/Lago2_lsltcs.png 480w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_768/v1790290229/Lago2_lsltcs.png 768w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290229/Lago2_lsltcs.png 1200w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1600/v1790290229/Lago2_lsltcs.png 1600w",
+      "sizes": "(max-width: 1024px) 100vw, 50vw"
+    }
+  ],
+
+  "lake-three": {
+    "name": "Lago 3",
+    "alt": "Ver detalhes do lago 3",
+    "description": "Lago integrado à vegetação e aos espaços de convivência do sítio.",
+    "src": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290227/Lago3_miaami.png",
+    "srcset": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_480/v1790290227/Lago3_miaami.png 480w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_768/v1790290227/Lago3_miaami.png 768w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290227/Lago3_miaami.png 1200w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1600/v1790290227/Lago3_miaami.png 1600w",
+    "sizes": "(max-width: 1024px) 100vw, 50vw"
+  },
+
+  "green-area": {
+    "name": "Área verde",
+    "alt": "Ver detalhes da área verde",
+    "description": "Área arborizada destinada ao descanso, circulação e contato com a natureza.",
+    "src": "https://res.cloudinary.com/djekybsww/image/upload/v1790290555/Paisagem2_w2mibl.png",
+    "srcset": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_480/v1790290555/Paisagem2_w2mibl.png 480w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_768/v1790290555/Paisagem2_w2mibl.png 768w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290555/Paisagem2_w2mibl.png 1200w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1600/v1790290555/Paisagem2_w2mibl.png 1600w",
+    "sizes": "(max-width: 1024px) 100vw, 50vw"
+  },
+
   "lake-one": {
-    capacity: "Área externa",
-    title: "Lago 1",
-    image: "/assets/img/lake/lake1.png",
-    alt: "Lago 1 do sítio",
-    description: "Um cenário aberto para pausas, fotos e momentos tranquilos junto à água."
-  },
-  pool: {
-    capacity: "60 pessoas",
-    title: "Piscina",
-    image: "/assets/img/swimming-pool/pool1.png",
-    alt: "Piscina do sítio",
-    description: "A piscina completa os dias de sol com conforto, lazer e uma vista para a natureza."
-  },
-  "lake-two": {
-    capacity: "Área externa",
-    title: "Lago 2",
-    image: "/assets/img/lake/lake1.png",
-    alt: "Lago 2 do sítio",
-    description: "Um espaço reservado do terreno, perfeito para contemplar a paisagem ou realizar fotos."
+    "name": "Lago 1",
+    "alt": "Ver detalhes do lago 1",
+    "description": "Área de lago integrada à vegetação e à paisagem natural do sítio.",
+    "src": "https://res.cloudinary.com/djekybsww/image/upload/v1790290555/Paisagem2_w2mibl.png",
+    "srcset": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_480/v1790290555/Paisagem2_w2mibl.png 480w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_768/v1790290555/Paisagem2_w2mibl.png 768w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290555/Paisagem2_w2mibl.png 1200w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1600/v1790290555/Paisagem2_w2mibl.png 1600w",
+    "sizes": "(max-width: 1024px) 100vw, 50vw"
   }
-};
+}
+
+preloadMapImages();
 
 function selectMapSpace(spaceKey) {
-  const selectedSpace = siteSpaces[spaceKey];
+  let selectedSpace = siteSpaces[spaceKey];
 
   if (!selectedSpace || !mapImage) return;
 
+  if (Array.isArray(selectedSpace)) {
+    selectedSpace = selectedSpace[0];
+  }
+
   mapMarkers.forEach((marker) => {
     const isActive = marker.dataset.space === spaceKey;
+
     marker.classList.toggle("is-active", isActive);
     marker.setAttribute("aria-pressed", String(isActive));
   });
 
-  mapCapacity.textContent = selectedSpace.capacity;
-  mapTitle.textContent = selectedSpace.title;
-  mapImage.src = selectedSpace.image;
+  mapTitle.textContent = selectedSpace.name;
+  mapImage.src = selectedSpace.src;
+  mapImage.srcset = selectedSpace.srcset || "";
+  mapImage.sizes = selectedSpace.sizes || "";
   mapImage.alt = selectedSpace.alt;
   mapDescription.textContent = selectedSpace.description;
+}
+function preloadMapImages() {
+  Object.values(siteSpaces).forEach((space) => {
+    const items = Array.isArray(space) ? space : [space];
+
+    items.forEach((item) => {
+      if (!item?.src) return;
+
+      const image = new Image();
+
+      image.srcset = item.srcset || "";
+      image.sizes = item.sizes || "";
+      image.src = item.src;
+    });
+  });
 }
 
 mapMarkers.forEach((marker) => {
@@ -262,49 +405,123 @@ mapMarkers.forEach((marker) => {
 document.addEventListener("DOMContentLoaded", () => {
   const mapToggle = document.getElementById("map-layer-toggle");
   const mapLayout = document.querySelector(".site-map__layout");
-  const mapPanel = document.querySelector(".map-panel");
+  const mapImage = document.querySelector(".map-panel__image");
 
-  if (!mapToggle || !mapLayout || !mapPanel) {
+  if (!mapToggle || !mapLayout || !mapImage) {
     return;
   }
+
+  const DESKTOP_BREAKPOINT = 1025;
+
+  const map4x3 = {
+    src: "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1600/v1790636475/Map4x3_az5cpk.png",
+
+    srcset: `
+      https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_480/v1790636475/Map4x3_az5cpk.png 480w,
+      https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_768/v1790636475/Map4x3_az5cpk.png 768w,
+      https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790636475/Map4x3_az5cpk.png 1200w,
+      https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1600/v1790636475/Map4x3_az5cpk.png 1600w,
+      https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_2200/v1790636475/Map4x3_az5cpk.png 2200w
+    `,
+
+    width: 1600,
+    height: 1200
+  };
+
+  const map16x9 = {
+    src: "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1600/v1790866494/Map16x9_bomi9w.png",
+
+    srcset: `
+      https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_480/v1790866494/Map16x9_bomi9w.png 480w,
+      https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_768/v1790866494/Map16x9_bomi9w.png 768w,
+      https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790866494/Map16x9_bomi9w.png 1200w,
+      https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1600/v1790866494/Map16x9_bomi9w.png 1600w,
+      https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_2200/v1790866494/Map16x9_bomi9w.png 2200w
+    `,
+
+    width: 1600,
+    height: 900
+  };
+
+  function isDesktop() {
+    return window.innerWidth >= DESKTOP_BREAKPOINT;
+  }
+
+  function changeMapImage(map) {
+  mapImage.classList.add("is-changing");
+
+  const newImage = new Image();
+
+  newImage.onload = () => {
+    mapImage.removeAttribute("srcset");
+
+    mapImage.width = map.width;
+    mapImage.height = map.height;
+
+    mapImage.src = map.src;
+    mapImage.srcset = map.srcset;
+
+    requestAnimationFrame(() => {
+      mapImage.classList.remove("is-changing");
+    });
+  };
+
+  newImage.src = map.src;
+}
 
   mapToggle.addEventListener("click", () => {
     const isActive =
       mapToggle.getAttribute("aria-pressed") === "true";
 
-    // Entrando no modo mapa puro
-    if (isActive) {
+    if (isDesktop()) {
 
-      // Guarda a altura atual do mapa ANTES de expandi-lo
-      const currentHeight = mapPanel.getBoundingClientRect().height;
+      if (isActive) {
+      
+        changeMapImage(map16x9);
 
-      mapPanel.style.height = `${currentHeight}px`;
+        mapLayout.classList.add("is-map-only");
 
-      mapLayout.classList.add("is-map-only");
+        mapToggle.setAttribute("aria-pressed", "false");
+        mapToggle.setAttribute(
+          "aria-label",
+          "Mostrar pontos interativos do mapa"
+        );
 
-      mapToggle.setAttribute("aria-pressed", "false");
+      } else {
+       
+        changeMapImage(map4x3);
 
-      mapToggle.setAttribute(
-        "aria-label",
-        "Mostrar pontos interativos do mapa"
-      );
+        mapLayout.classList.remove("is-map-only");
 
-    } 
-    // Voltando para o modo interativo
-    else {
+        mapToggle.setAttribute("aria-pressed", "true");
+        mapToggle.setAttribute(
+          "aria-label",
+          "Ocultar pontos interativos do mapa"
+        );
+      }
 
-      mapLayout.classList.remove("is-map-only");
-
-      // Retira a altura fixa e devolve o comportamento original
-      mapPanel.style.height = "";
-
-      mapToggle.setAttribute("aria-pressed", "true");
-
-      mapToggle.setAttribute(
-        "aria-label",
-        "Ocultar pontos interativos do mapa"
-      );
+      return;
     }
+
+    /*
+     * ================================================
+     * TELAS PEQUENAS
+     * ================================================
+     */
+
+    mapLayout.classList.toggle("pins-hidden", isActive);
+
+    mapToggle.setAttribute(
+      "aria-pressed",
+      String(!isActive)
+    );
+
+    mapToggle.setAttribute(
+      "aria-label",
+      isActive
+        ? "Mostrar pontos do mapa"
+        : "Ocultar pontos do mapa"
+    );
   });
 });
 
@@ -397,18 +614,24 @@ whatsappForm?.addEventListener("submit", (event) => {
 });
 
 
-
-/* NAVIGATION */
 const navigation = document.querySelector("#site-navigation");
 const navigationToggle = document.querySelector("#navigation-toggle");
 const navigationMenu = document.querySelector("#navigation-menu");
-const navigationLinks = [...document.querySelectorAll(".site-navigation__menu a")];
+
+const navigationLinks = [
+  ...document.querySelectorAll(".site-navigation__inner [data-target]")
+];
+
 
 function updateNavigationVisibility() {
   if (!navigation) return;
 
   const shouldShowNavigation = window.scrollY > 120;
-  navigation.classList.toggle("is-visible", shouldShowNavigation);
+
+  navigation.classList.toggle(
+    "is-visible",
+    shouldShowNavigation
+  );
 
   if (!shouldShowNavigation) {
     navigationMenu?.classList.remove("is-open");
@@ -416,19 +639,69 @@ function updateNavigationVisibility() {
   }
 }
 
+
 function closeNavigationMenu() {
   navigationMenu?.classList.remove("is-open");
   navigationToggle?.setAttribute("aria-expanded", "false");
 }
 
+
+/* =========================================================
+   ABRIR / FECHAR MENU
+   ========================================================= */
+
 navigationToggle?.addEventListener("click", () => {
   const isOpen = navigationMenu?.classList.toggle("is-open");
-  navigationToggle.setAttribute("aria-expanded", String(isOpen));
+
+  navigationToggle.setAttribute(
+    "aria-expanded",
+    String(isOpen)
+  );
 });
 
+
+/* =========================================================
+   NAVEGAÇÃO POR ID
+   ========================================================= */
+
 navigationLinks.forEach((link) => {
-  link.addEventListener("click", closeNavigationMenu);
+
+  link.addEventListener("click", () => {
+
+    const targetId = link.dataset.target;
+
+    if (!targetId) return;
+
+    const targetSection = document.getElementById(targetId);
+
+    if (!targetSection) {
+      console.warn(
+        `Seção com ID "${targetId}" não encontrada.`
+      );
+
+      return;
+    }
+
+    const navigationHeight =
+      navigation?.getBoundingClientRect().height ?? 0;
+
+    const targetPosition =
+      targetSection.getBoundingClientRect().top + window.scrollY + 50;
+
+    window.scrollTo({
+      top: targetPosition,
+      behavior: "smooth"
+    });
+
+    closeNavigationMenu();
+  });
+
 });
+
+
+/* =========================================================
+   ESC
+   ========================================================= */
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
@@ -436,20 +709,52 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-window.addEventListener("scroll", updateNavigationVisibility, { passive: true });
-window.addEventListener("resize", updateNavigationVisibility);
+
+/* =========================================================
+   SCROLL / RESIZE
+   ========================================================= */
+
+window.addEventListener(
+  "scroll",
+  updateNavigationVisibility,
+  { passive: true }
+);
+
+window.addEventListener(
+  "resize",
+  updateNavigationVisibility
+);
+
 updateNavigationVisibility();
+
+
+/* =========================================================
+   IDENTIFICAR SEÇÃO ATIVA
+   ========================================================= */
 
 const navigationObserver = new IntersectionObserver(
   (entries) => {
+
     entries.forEach((entry) => {
+
       if (!entry.isIntersecting) return;
 
       navigationLinks.forEach((link) => {
-        const isCurrentSection = link.getAttribute("href") === `#${entry.target.id}`;
-        link.classList.toggle("is-active", isCurrentSection);
+
+        const targetId = link.dataset.target;
+
+        const isCurrentSection =
+          targetId === entry.target.id;
+
+        link.classList.toggle(
+          "is-active",
+          isCurrentSection
+        );
+
       });
+
     });
+
   },
   {
     rootMargin: "-35% 0px -55% 0px",
@@ -457,16 +762,25 @@ const navigationObserver = new IntersectionObserver(
   }
 );
 
+
+/* =========================================================
+   OBSERVAR SEÇÕES
+   ========================================================= */
+
 navigationLinks.forEach((link) => {
-  const sectionId = link.getAttribute("href")?.replace("#", "");
-  const section = sectionId ? document.getElementById(sectionId) : null;
+
+  const targetId = link.dataset.target;
+
+  if (!targetId) return;
+
+  const section =
+    document.getElementById(targetId);
 
   if (section) {
     navigationObserver.observe(section);
   }
+
 });
-
-
 
 
 const pastEvents = {

@@ -172,7 +172,10 @@
 .gallery-album__content small {
   color: rgba(255, 255, 255, 0.86);
   font-size: 0.65rem;
+  display: flex;
+  gap: 0.15rem;
 }
+
 
 .gallery-album:hover img {
   transform: scale(1.06);

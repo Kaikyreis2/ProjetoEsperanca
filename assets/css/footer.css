@@ -11,6 +11,8 @@
 
 .site-footer__header .eyebrow {
   color: #dc8651;
+  display: flex;
+  align-items: center;
 }
 
 .site-footer__header h2 {
