@@ -333,7 +333,9 @@
   aspect-ratio: 3 / 2;
 }
 
-
+.gallery-carousel__item[hidden] {
+  display: none !important;
+}
 
 @media (max-width: 900px) {
   .gallery-grid {

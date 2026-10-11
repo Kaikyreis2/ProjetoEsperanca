@@ -24,13 +24,6 @@ if (videoHero) {
 
 
 
-/* =========================================================
-   PHOTO GALLERY SECTION
-   Save as: assets/js/gallery.js
-   Then add this before </body> in index.html:
-   <script src="/assets/js/gallery.js" defer></script>
-   ========================================================= */
-
    
 
 
@@ -104,43 +97,147 @@ const beforeImage = document.querySelector("#before-image");
 const afterImage = document.querySelector("#after-image");
 
 const spaces = {
-  "main-hall": {
-    eyebrow: "Salão principal",
+  "marriage": {
+    eyebrow: "Lago e Natureza",
     title: "O coração do sítio",
-    description: "Veja o salão ganhar vida: de um espaço amplo e acolhedor ao cenário completo para receber seus convidados.",
-    beforeImage: "/assets/img/main-hall/main-hall2.png",
-    beforeAlt: "Salão principal antes da montagem do evento",
-    afterImage: "/assets/img/main-hall/main-hall.png",
-    afterAlt: "Salão principal preparado para um evento"
+    description: "O jardim e o lago dão ao evento uma paisagem aberta, leve e especial em cada momento do dia",
+    beforeImage: "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290227/Lago3_miaami.png",
+    beforeAlt: "Lago antes da montagem do evento",
+    afterImage: "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1791479145/Cerim%C3%B4nia_Tropical_%C3%A0_Beira_da_Lagoa_hf9q8i.png",
+    afterAlt: "Lago preparado para um evento"
   },
-  rooms: {
-    eyebrow: "Quartos",
+  "birthday": {
+    eyebrow: "Áreas Externas",
     title: "Conforto para ficar",
     description: "Ambientes preparados para que anfitriões e convidados possam descansar com tranquilidade depois da celebração.",
-    beforeImage: "/assets/images/interactive-tour/rooms-before.webp",
-    beforeAlt: "Quarto antes da decoração",
-    afterImage: "/assets/images/interactive-tour/rooms-after.webp",
-    afterAlt: "Quarto preparado para receber hóspedes"
+    beforeImage: "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290552/Paisagem7_hx8ppm.png",
+    beforeAlt: "Área externa antes da decoração",
+    afterImage: "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1791480074/8fa137de-45b4-49b4-8062-606be63ab0bb.png",
+    afterAlt: "Área externa preparada para receber hóspedes"
   },
-  "lake-garden": {
-    eyebrow: "Lago & jardim",
+  "church": {
+    eyebrow: "Salão de Reuniões",
     title: "Natureza como cenário",
-    description: "O jardim e o lago dão ao evento uma paisagem aberta, leve e especial em cada momento do dia.",
-    beforeImage: "/assets/images/interactive-tour/lake-garden-before.webp",
-    beforeAlt: "Jardim e lago antes da cerimônia",
-    afterImage: "/assets/images/interactive-tour/lake-garden-after.webp",
-    afterAlt: "Jardim e lago preparados para uma cerimônia"
+    description: "O salão de reuniões é um espaço acolhedor que combina conforto e simplicidade, ideal para encontros e celebrações.",
+    beforeImage: "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790291371/SalaoDeReuniao_scghcj.png",
+    beforeAlt: "salão de reuniões antes da cerimônia",
+    afterImage: "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1791480341/2b54f9f4-2186-4b27-aef9-05a1a30636cb.png",
+    afterAlt: "salão de reuniões preparado para uma cerimônia"
   },
-  barbecue: {
-    eyebrow: "Churrasqueira",
+  "confraternization": {
+    eyebrow: "Paisagem e lazer",
     title: "Encontros sem pressa",
     description: "Uma área acolhedora para refeições, confraternizações e celebrações que atravessam o dia.",
-    beforeImage: "/assets/images/interactive-tour/barbecue-before.webp",
-    beforeAlt: "Área de churrasqueira antes da montagem",
-    afterImage: "/assets/images/interactive-tour/barbecue-after.webp",
-    afterAlt: "Área de churrasqueira preparada para convidados"
+    beforeImage: "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790291489/VistaAreaCentral_prc1de.png",
+    beforeAlt: "Área central antes da montagem",
+    afterImage: "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1791480557/3c6aa350-eecf-472b-be67-d9b9fbec372b.png",
+    afterAlt: "Área central preparada para convidados"
   }
 };
+
+const preloadedTourImages = new Map();
+
+function preloadImage(url) {
+  if (!url) {
+    return Promise.resolve(false);
+  }
+
+  // Evita solicitar novamente a mesma imagem.
+  if (preloadedTourImages.has(url)) {
+    return preloadedTourImages.get(url);
+  }
+
+  const image = new Image();
+
+  image.decoding = "async";
+  image.fetchPriority = "low";
+
+  const loadPromise = new Promise((resolve) => {
+    image.addEventListener(
+      "load",
+      () => resolve(true),
+      { once: true }
+    );
+
+    image.addEventListener(
+      "error",
+      () => {
+        console.warn("Não foi possível pré-carregar:", url);
+        resolve(false);
+      },
+      { once: true }
+    );
+  });
+
+  // Registra antes de iniciar a requisição.
+  preloadedTourImages.set(url, loadPromise);
+
+  image.src = url;
+
+  return loadPromise;
+}
+
+
+/* Pré-carrega o par de imagens de um ambiente. */
+function preloadSpaceImages(spaceKey) {
+  const space = spaces[spaceKey];
+
+  if (!space) {
+    return Promise.resolve([]);
+  }
+
+  return Promise.all([
+    preloadImage(space.beforeImage),
+    preloadImage(space.afterImage)
+  ]);
+}
+
+
+/* Pré-carrega os demais ambientes em pequenos lotes. */
+function preloadAllTourImages() {
+  const urls = [
+    ...new Set(
+      Object.values(spaces).flatMap((space) => [
+        space.beforeImage,
+        space.afterImage
+      ]).filter(Boolean)
+    )
+  ];
+
+  let index = 0;
+
+  function loadNextBatch() {
+    const batch = urls.slice(index, index + 2);
+
+    index += batch.length;
+
+    if (batch.length === 0) {
+      return;
+    }
+
+    Promise.all(batch.map(preloadImage)).finally(() => {
+      if (index >= urls.length) {
+        return;
+      }
+
+      if ("requestIdleCallback" in window) {
+        requestIdleCallback(loadNextBatch, {
+          timeout: 1500
+        });
+      } else {
+        setTimeout(loadNextBatch, 200);
+      }
+    });
+  }
+
+  if ("requestIdleCallback" in window) {
+    requestIdleCallback(loadNextBatch, {
+      timeout: 1000
+    });
+  } else {
+    setTimeout(loadNextBatch, 300);
+  }
+}
 
 function updateComparisonPosition(value) {
   if (!comparison) return;
@@ -174,17 +271,29 @@ if (comparison && comparisonRange) {
 }
 
 tourTabs.forEach((tab) => {
+  const spaceKey = tab.dataset.space;
+
+  // Desktop: começa a carregar quando o usuário passa o mouse.
+  tab.addEventListener("pointerenter", () => {
+    preloadSpaceImages(spaceKey);
+  });
+
+  tab.addEventListener("focus", () => {
+    preloadSpaceImages(spaceKey);
+  });
+
   tab.addEventListener("click", () => {
     const isAlreadyActive = tab.classList.contains("is-active");
 
     tourTabs.forEach((button) => {
       const isActive = button === tab;
+
       button.classList.toggle("is-active", isActive);
       button.setAttribute("aria-selected", String(isActive));
     });
 
     if (!isAlreadyActive) {
-      updateSpace(tab.dataset.space);
+      updateSpace(spaceKey);
     }
   });
 });
@@ -280,7 +389,7 @@ const siteSpaces = {
     "sizes": "(max-width: 1024px) 100vw, 50vw"
   },
 
-  "lake-four": [
+  "lake-four": 
     {
       "name": "Lago 4",
       "alt": "Ver detalhes do lago 4",
@@ -289,15 +398,6 @@ const siteSpaces = {
       "srcset": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_480/v1790290230/Lago5_uc21re.png 480w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_768/v1790290230/Lago5_uc21re.png 768w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290230/Lago5_uc21re.png 1200w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1600/v1790290230/Lago5_uc21re.png 1600w",
       "sizes": "(max-width: 1024px) 100vw, 50vw"
     },
-    {
-      "name": "Lago 4",
-      "alt": "Ver detalhes do lago 4",
-      "description": "Área de lago cercada por vegetação e integrada à paisagem natural.",
-      "src": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290230/Lago5_uc21re.png",
-      "srcset": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_480/v1790290230/Lago5_uc21re.png 480w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_768/v1790290230/Lago5_uc21re.png 768w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290230/Lago5_uc21re.png 1200w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1600/v1790290230/Lago5_uc21re.png 1600w",
-      "sizes": "(max-width: 1024px) 100vw, 50vw"
-    }
-  ],
 
   "lake-five": {
     "name": "Lago 5",
@@ -345,12 +445,12 @@ const siteSpaces = {
     "sizes": "(max-width: 1024px) 100vw, 50vw"
   },
 
-  "lake-one": {
-    "name": "Lago 1",
-    "alt": "Ver detalhes do lago 1",
-    "description": "Área de lago integrada à vegetação e à paisagem natural do sítio.",
-    "src": "https://res.cloudinary.com/djekybsww/image/upload/v1790290555/Paisagem2_w2mibl.png",
-    "srcset": "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_480/v1790290555/Paisagem2_w2mibl.png 480w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_768/v1790290555/Paisagem2_w2mibl.png 768w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290555/Paisagem2_w2mibl.png 1200w, https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1600/v1790290555/Paisagem2_w2mibl.png 1600w",
+  "pet": {
+    "name": "Área de pets",
+    "alt": "Ver detalhes da área de pets",
+    "description": "Espaço dedicado aos animais de estimação, com conforto e segurança para os pequenos amigos.",
+    "src": "https://res.cloudinary.com/djekybsww/image/upload/v1791477222/a030bb2e-a3e1-4e2a-b898-02eb9718e03a.png",
+    "srcset": "https://res.cloudinary.com/djekybsww/image/upload/v1791477222/a030bb2e-a3e1-4e2a-b898-02eb9718e03a.png 480w, https://res.cloudinary.com/djekybsww/image/upload/v1791477222/a030bb2e-a3e1-4e2a-b898-02eb9718e03a.png 768w, https://res.cloudinary.com/djekybsww/image/upload/v1791477222/a030bb2e-a3e1-4e2a-b898-02eb9718e03a.png 1200w, https://res.cloudinary.com/djekybsww/image/upload/v1791477222/a030bb2e-a3e1-4e2a-b898-02eb9718e03a.png 1600w",
     "sizes": "(max-width: 1024px) 100vw, 50vw"
   }
 }
@@ -964,121 +1064,58 @@ document.addEventListener("keydown", (event) => {
 
 
 /* GALLERY */
+/* =========================================================
+   GALLERY — DADOS DOS ÁLBUNS
+   ========================================================= */
+
 const galleryAlbums = {
-  rooms: {
-    title: "Quartos",
-    photos: [
-      {
-        src: "/assets/img/room/room1.png",
-        alt: "Quarto confortável do sítio"
-      },
-      {
-        src: "/assets/img/room/room2.png",
-        alt: "Quarto preparado para receber hóspedes"
-      },
-      {
-        src: "/assets/img/room/room3.png",
-        alt: "Detalhe da acomodação do sítio"
-      }
-    ]
-  },
-
-  parking: {
-    title: "Estacionamento",
-    photos: [
-      {
-        src: "/assets/img/parker/parker1.png",
-        alt: "Estacionamento amplo e gramado"
-      },
-      {
-        src: "/assets/img/parker/parker2.png",
-        alt: "Entrada do estacionamento do sítio"
-      },
-      {
-        src: "/assets/img/parker/parker3.png",
-        alt: "Área de estacionamento próxima aos ambientes"
-      }
-    ]
-  },
-
   pool: {
     title: "Piscina",
     photos: [
       {
-        src: "/assets/img/swimming-pool/pool1.png",
+        src: "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290740/AreaDePiscinas3_poumjx.png",
         alt: "Piscina com vista para a natureza"
       },
       {
-        src: "/assets/img/swimming-pool/pool2.png",
+        src: "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290738/AreaDaChurrasqueira2_iakrox.png",
         alt: "Área da piscina do sítio"
       },
       {
-        src: "/assets/img/swimming-pool/pool3.png",
+        src: "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290738/AreaDePiscinas_pwjpvu.png",
         alt: "Espreguiçadeiras ao redor da piscina"
-      },
-      {
-        src: "/assets/img/swimming-pool/pool4.png",
-        alt: "Piscina preparada para receber convidados"
-      },
-      {
-        src: "/assets/img/swimming-pool/pool5.png",
-        alt: "Vista da piscina e do gramado"
       }
     ]
   },
-
+  pet: {
+    title: "Área de Pets",
+    photos: []
+  },
   lakes: {
     title: "Lagos",
     photos: [
       {
-        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790290231/Lago3.1_uvvzgm.png",
+        src: "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290231/Lago3.1_uvvzgm.png",
         alt: "Lago do sítio ao entardecer"
       },
       {
-        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790290230/Lago5_uc21re.png",
+        src: "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290230/Lago5_uc21re.png",
         alt: "Vista do lago lateral do sítio"
       },
       {
-        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790290229/Lago2_lsltcs.png",
+        src: "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290229/Lago2_lsltcs.png",
         alt: "Área verde próxima aos lagos"
       },
       {
-        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790290227/Lago2.1_x1q4r4.png",
+        src: "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290227/Lago2.1_x1q4r4.png",
         alt: "Vista do lago lateral do sítio"
       },
       {
-        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790290227/Lago3_miaami.png",
+        src: "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290227/Lago3_miaami.png",
         alt: "Área verde próxima aos lagos"
       },
       {
-        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790290221/Lago4_p0l6yx.png",
+        src: "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290221/Lago4_p0l6yx.png",
         alt: "Área verde próxima aos lagos"
-      }
-    ]
-  },
-
-  bathrooms: {
-    title: "Banheiros",
-    photos: [
-      {
-        src: "/assets/img/bathroom/bathroom1.png",
-        alt: "Banheiro do sítio"
-      },
-      {
-        src: "/assets/img/bathroom/bathroom2.png",
-        alt: "Detalhe do banheiro preparado para os convidados"
-      },
-      {
-        src: "/assets/img/bathroom/bathroom3.png",
-        alt: "Lavabo do sítio"
-      },
-      {
-        src: "/assets/img/bathroom/bathroom4.png",
-        alt: "Banheiro amplo e iluminado"
-      },
-      {
-        src: "/assets/img/bathroom/bathroom5.png",
-        alt: "Detalhe da estrutura dos banheiros"
       }
     ]
   },
@@ -1087,32 +1124,32 @@ const galleryAlbums = {
     title: "Salão Principal",
     photos: [
       {
-        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790291488/VistaAreaCentral3_dqyh8y.png",
-        alt: "Salão Principal preparado para evento"
+        src: "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790291488/VistaAreaCentral3_dqyh8y.png",
+        alt: "Salão principal preparado para evento"
       },
       {
-        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790291488/VistaAreaCentral3_dqyh8y.png",
-        alt: "Mesas montadas no Salão Principal"
+        src: "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790291488/VistaAreaCentral3_dqyh8y.png",
+        alt: "Mesas montadas no salão principal"
       },
       {
-        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790291027/CozinhaIndustrial_elsqqf.png",
-        alt: "Vista interna do Salão Principal"
+        src: "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790291027/CozinhaIndustrial_elsqqf.png",
+        alt: "Vista interna do salão principal"
       },
       {
-        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790291024/CozinhaIndustrial3_t6ex7d.png",
-        alt: "Salão Principal preparado para evento"
+        src: "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790291024/CozinhaIndustrial3_t6ex7d.png",
+        alt: "Salão principal preparado para evento"
       },
       {
-        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790290973/DormitorioESaladeRefeicoesAreaCentral_dex0ms.png",
-        alt: "Mesas montadas no Salão Principal"
+        src: "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290973/DormitorioESaladeRefeicoesAreaCentral_dex0ms.png",
+        alt: "Mesas montadas no salão principal"
       },
       {
-        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790290949/DormitorioAreaCentral_qnywe0.png",
-        alt: "Vista interna do Salão Principal"
+        src: "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290949/DormitorioAreaCentral_qnywe0.png",
+        alt: "Vista interna do salão principal"
       },
       {
-        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790290931/BanheiroExteriorSalaoPrincipal_xeslnp.png",
-        alt: "Vista interna do Salão Principal"
+        src: "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790290931/BanheiroExteriorSalaoPrincipal_xeslnp.png",
+        alt: "Vista interna do salão principal"
       }
     ]
   },
@@ -1121,12 +1158,66 @@ const galleryAlbums = {
     title: "Salão de Reuniões",
     photos: [
       {
-        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790291374/EntradaSalaoDeReuniao_gqsgr9.png",
-        alt: "Salão de Reuniões com mesa de madeira"
+        src: "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790291374/EntradaSalaoDeReuniao_gqsgr9.png",
+        alt: "Salão de reuniões com mesa de madeira"
       },
       {
-        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790291371/SalaoDeReuniao_scghcj.png",
+        src: "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790291371/SalaoDeReuniao_scghcj.png",
         alt: "Ambiente preparado para encontro corporativo"
+      }
+    ]
+  },
+
+  "gamer-hall": {
+    title: "Área Recreativa",
+    photos: [
+      {
+        src: "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1790291149/SalaoDeJogos2_e5rw4l.png",
+        alt: "Salão de jogos com mesa de sinuca e pebolim"
+      }
+    ]
+  },
+
+  "secondary-hall": {
+    title: "Salão Secundário",
+    photos: [
+      {
+        src: "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1791738825/476d9c4f-0c5f-48d9-b4fb-e8e908882368.png",
+        alt: "Banheiro do salão secundário"
+      },
+      {
+        src: "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1791738822/670b0bc3-9774-4c99-a159-9649f27bef32.png",
+        alt: "Banheiro do salão secundário"
+      },
+      {
+        src: "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1791738802/ccc58e67-3e52-40c4-8ab1-41053e57401d.png",
+        alt: "Acomodações do salão secundário"
+      }
+    ]
+  },
+
+  nature: {
+    title: "Área Verde",
+    photos: [
+      {
+        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790291329/Trilha_g0piac.png",
+        alt: "Trilha na área verde"
+      },
+      {
+        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790290903/Bambuzal_bgaspb.png",
+        alt: "Bambuzal na área verde"
+      },
+      {
+        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790290565/Paisagem8_ex2el1.png",
+        alt: "Paisagem da área verde"
+      },
+      {
+        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790290556/Paisagem4_eee7u4.png",
+        alt: "Paisagem da área verde"
+      },
+      {
+        src: "https://res.cloudinary.com/djekybsww/image/upload/v1790290564/paisagem9_qwaqrq.png",
+        alt: "Paisagem da área verde"
       }
     ]
   }
@@ -1134,23 +1225,25 @@ const galleryAlbums = {
 
 
 /* =========================================================
-   ELEMENTOS DA PÁGINA
-========================================================= */
+   ELEMENTOS DO DOM
+   ========================================================= */
 
 const gallerySection = document.querySelector("#gallery");
 
-const galleryFilters = document.querySelectorAll(
-  ".gallery-filter[data-filter]"
-);
+const galleryFilters = [
+  ...document.querySelectorAll(
+    ".gallery-filter[data-filter]"
+  )
+];
 
-const galleryAlbumCards = document.querySelectorAll(
-  ".gallery-album[data-category]"
-);
+const galleryAlbumCards = [
+  ...document.querySelectorAll(
+    ".gallery-album[data-category]"
+  )
+];
 
 const galleryGrid = document.querySelector(".gallery-grid");
-
 const galleryViewer = document.querySelector("#gallery-viewer");
-
 const galleryCarousel = document.querySelector("#gallery-carousel");
 
 const galleryTrack = document.querySelector(
@@ -1171,32 +1264,280 @@ const nextGalleryButton = document.querySelector(
 
 
 /* =========================================================
-   ESTADO ATUAL DO CARROSSEL
-========================================================= */
+   ESTADO DA GALERIA
+   ========================================================= */
 
 let activeGalleryCategory = null;
 let activeGalleryPhotos = [];
 let activeGalleryPhotoIndex = 0;
+
 let galleryScrollFrame = null;
+let gallerySlidesInitialized = false;
+
+
+/* =========================================================
+   CONFIGURAÇÕES DE IMAGEM
+   ========================================================= */
+
+const galleryImageWidths = [
+  480,
+  768,
+  1024,
+  1440,
+  1920,
+  2560
+];
+
+const galleryImageSizes = [
+  "(max-width: 480px) 100vw",
+  "(max-width: 768px) 100vw",
+  "(max-width: 1024px) 100vw",
+  "(max-width: 1440px) 100vw",
+  "100vw"
+].join(", ");
+
+
+/* =========================================================
+   URLS RESPONSIVAS DO CLOUDINARY
+   ========================================================= */
+
+/**
+ * Remove transformações anteriores do Cloudinary
+ * e adiciona uma única transformação otimizada.
+ *
+ * Exemplo:
+ * /upload/f_auto,q_auto,w_1200/v1234/imagem.png
+ *
+ * Torna-se:
+ * /upload/f_auto,q_auto,w_480/v1234/imagem.png
+ */
+function buildCloudinaryUrl(src, width = 1200) {
+  if (!src || !src.includes("/upload/")) {
+    return src;
+  }
+
+  const uploadMarker = "/upload/";
+  const uploadIndex = src.indexOf(uploadMarker);
+
+  const prefix = src.slice(
+    0,
+    uploadIndex + uploadMarker.length
+  );
+
+  const pathAfterUpload = src.slice(
+    uploadIndex + uploadMarker.length
+  );
+
+  // Procura a versão do Cloudinary e o caminho do arquivo.
+  const versionMatch = pathAfterUpload.match(
+    /(?:^|\/)(v\d+\/.*)$/
+  );
+
+  // Se a URL não tiver uma versão identificável,
+  // mantém a URL original para evitar montar uma URL inválida.
+  if (!versionMatch) {
+    return src;
+  }
+
+  const originalAssetPath = versionMatch[1];
+
+  return (
+    `${prefix}f_auto,q_auto,w_${width}/` +
+    originalAssetPath
+  );
+}
+
+
+/**
+ * Gera o srcset com resoluções alternativas.
+ */
+function buildCloudinarySrcset(src) {
+  return galleryImageWidths
+    .map((width) => {
+      const optimizedUrl = buildCloudinaryUrl(
+        src,
+        width
+      );
+
+      return `${optimizedUrl} ${width}w`;
+    })
+    .join(", ");
+}
+
+
+/* =========================================================
+   PRÉ-CARREGAMENTO DAS IMAGENS
+   ========================================================= */
+
+/*
+ * Armazena as requisições em andamento e concluídas.
+ * A chave é a URL original do álbum.
+ */
+const galleryImageCache = new Map();
+
+
+/**
+ * Pré-carrega uma imagem.
+ *
+ * Requisições repetidas da mesma URL compartilham
+ * a mesma Promise, evitando downloads redundantes
+ * iniciados por este código.
+ */
+function preloadImage(photo, priority = "low") {
+  if (!photo?.src) {
+    return Promise.resolve(false);
+  }
+
+  if (galleryImageCache.has(photo.src)) {
+    return galleryImageCache.get(photo.src);
+  }
+
+  const image = new Image();
+
+  image.decoding = "async";
+  image.fetchPriority = priority;
+
+  const loadPromise = new Promise((resolve) => {
+    image.onload = async () => {
+      try {
+        await image.decode();
+      } catch {
+        // O download pode ter funcionado mesmo que
+        // a decodificação explícita não seja concluída.
+      }
+
+      resolve(true);
+    };
+
+    image.onerror = () => {
+      console.warn(
+        "Não foi possível carregar a imagem da Gallery:",
+        photo.src
+      );
+
+      galleryImageCache.delete(photo.src);
+
+      resolve(false);
+    };
+  });
+
+  // Registra antes de iniciar a requisição.
+  galleryImageCache.set(photo.src, loadPromise);
+
+  image.srcset = buildCloudinarySrcset(photo.src);
+  image.sizes = galleryImageSizes;
+  image.src = buildCloudinaryUrl(photo.src, 1200);
+
+  return loadPromise;
+}
+
+
+/**
+ * Pré-carrega as imagens de uma categoria.
+ *
+ * Pode ser chamada quando o usuário passa o mouse
+ * sobre um filtro ou quando seleciona um álbum.
+ */
+function preloadGalleryCategory(category, priority = "low") {
+  const photos = getPhotosFromCategory(category);
+
+  return Promise.all(
+    photos.map((photo) => preloadImage(photo, priority))
+  );
+}
+
+
+/**
+ * Pré-carrega gradualmente as imagens de todos os álbuns,
+ * em lotes pequenos, quando o navegador está disponível.
+ */
+function preloadGalleryInBackground() {
+  const allPhotos = getPhotosFromCategory("all");
+
+  // Elimina URLs repetidas.
+  const uniquePhotos = [
+    ...new Map(
+      allPhotos.map((photo) => [
+        photo.src,
+        photo
+      ])
+    ).values()
+  ];
+
+  let index = 0;
+
+  function loadNextBatch() {
+    const batch = uniquePhotos.slice(
+      index,
+      index + 2
+    );
+
+    index += batch.length;
+
+    if (batch.length === 0) {
+      return;
+    }
+
+    Promise.all(
+      batch.map((photo) => preloadImage(photo, "low"))
+    ).finally(() => {
+      if (index >= uniquePhotos.length) {
+        return;
+      }
+
+      if ("requestIdleCallback" in window) {
+        requestIdleCallback(loadNextBatch, {
+          timeout: 1500
+        });
+      } else {
+        setTimeout(loadNextBatch, 200);
+      }
+    });
+  }
+
+  if ("requestIdleCallback" in window) {
+    requestIdleCallback(loadNextBatch, {
+      timeout: 1000
+    });
+  } else {
+    setTimeout(loadNextBatch, 300);
+  }
+}
 
 
 /* =========================================================
    FUNÇÕES DE APOIO
-========================================================= */
+   ========================================================= */
 
+/**
+ * Retorna somente os slides visíveis.
+ *
+ * Os slides ocultos continuam no DOM, mas não podem
+ * participar dos cálculos de posição do carrossel.
+ */
 function getGallerySlides() {
-  if (!galleryTrack) return [];
+  if (!galleryTrack) {
+    return [];
+  }
 
   return Array.from(
-    galleryTrack.querySelectorAll(".gallery-carousel__item")
+    galleryTrack.querySelectorAll(
+      ".gallery-carousel__item:not([hidden])"
+    )
   );
 }
 
-function getSlideScrollPosition(slide) {
-  if (!galleryCarousel || !slide) return 0;
 
-  const carouselBounds = galleryCarousel.getBoundingClientRect();
-  const slideBounds = slide.getBoundingClientRect();
+function getSlideScrollPosition(slide) {
+  if (!galleryCarousel || !slide) {
+    return 0;
+  }
+
+  const carouselBounds =
+    galleryCarousel.getBoundingClientRect();
+
+  const slideBounds =
+    slide.getBoundingClientRect();
 
   return (
     galleryCarousel.scrollLeft +
@@ -1205,16 +1546,20 @@ function getSlideScrollPosition(slide) {
   );
 }
 
+
 function getClosestGalleryPhotoIndex() {
   const slides = getGallerySlides();
 
-  if (!slides.length || !galleryCarousel) return 0;
+  if (!slides.length || !galleryCarousel) {
+    return 0;
+  }
 
   let closestIndex = 0;
   let smallestDistance = Infinity;
 
   slides.forEach((slide, index) => {
-    const slidePosition = getSlideScrollPosition(slide);
+    const slidePosition =
+      getSlideScrollPosition(slide);
 
     const distance = Math.abs(
       galleryCarousel.scrollLeft - slidePosition
@@ -1230,10 +1575,10 @@ function getClosestGalleryPhotoIndex() {
 }
 
 
-
 function getTotalGalleryPhotos() {
   return activeGalleryPhotos.length;
 }
+
 
 function getPhotoLabel(totalPhotos) {
   return totalPhotos === 1 ? "foto" : "fotos";
@@ -1242,21 +1587,29 @@ function getPhotoLabel(totalPhotos) {
 
 /* =========================================================
    FILTROS
-========================================================= */
+   ========================================================= */
 
 function updateGalleryFilters(activeCategory) {
   galleryFilters.forEach((button) => {
-    const isActive = button.dataset.filter === activeCategory;
+    const isActive =
+      button.dataset.filter === activeCategory;
 
-    button.classList.toggle("is-active", isActive);
-    button.setAttribute("aria-pressed", String(isActive));
+    button.classList.toggle(
+      "is-active",
+      isActive
+    );
+
+    button.setAttribute(
+      "aria-pressed",
+      String(isActive)
+    );
   });
 }
 
 
 /* =========================================================
    FOTOS DA CATEGORIA
-========================================================= */
+   ========================================================= */
 
 function getPhotosFromCategory(category) {
   if (category === "all") {
@@ -1273,7 +1626,9 @@ function getPhotosFromCategory(category) {
 
   const album = galleryAlbums[category];
 
-  if (!album) return [];
+  if (!album) {
+    return [];
+  }
 
   return album.photos.map((photo, index) => ({
     ...photo,
@@ -1283,10 +1638,72 @@ function getPhotosFromCategory(category) {
   }));
 }
 
-/* =========================================================
-   RENDERIZAÇÃO DAS FOTOS
-========================================================= */
 
+/* =========================================================
+   CONSTRUÇÃO ÚNICA DOS SLIDES
+   ========================================================= */
+
+/**
+ * Cria todos os slides uma única vez.
+ *
+ * A partir daqui, os filtros apenas alternam a propriedade
+ * hidden, sem reconstruir o HTML.
+ */
+function initializeGallerySlides() {
+  if (
+    !galleryTrack ||
+    gallerySlidesInitialized
+  ) {
+    return;
+  }
+
+  const allPhotos = getPhotosFromCategory("all");
+
+  galleryTrack.innerHTML = allPhotos
+    .map((photo) => {
+      const optimizedSrc =
+        buildCloudinaryUrl(photo.src, 1200);
+
+      const optimizedSrcset =
+        buildCloudinarySrcset(photo.src);
+
+      return `
+        <figure
+          class="gallery-carousel__item"
+          data-category="${photo.categoryId}"
+          hidden
+        >
+          <img
+            src="${optimizedSrc}"
+            srcset="${optimizedSrcset}"
+            sizes="${galleryImageSizes}"
+            alt="${photo.alt}"
+            loading="lazy"
+            decoding="async"
+            width="1200"
+            height="900"
+          />
+
+          <figcaption class="gallery-carousel__caption">
+            ${photo.albumTitle} · Foto ${photo.photoNumber}
+          </figcaption>
+        </figure>
+      `;
+    })
+    .join("");
+
+  gallerySlidesInitialized = true;
+}
+
+
+/* =========================================================
+   RENDERIZAÇÃO / FILTRO DAS FOTOS
+   ========================================================= */
+
+/**
+ * Não recria os slides.
+ * Apenas mostra os que correspondem à categoria.
+ */
 function renderGalleryPhotos(category) {
   if (
     !galleryGrid ||
@@ -1297,55 +1714,78 @@ function renderGalleryPhotos(category) {
     return;
   }
 
+  initializeGallerySlides();
+
+  const selectedPhotos =
+    getPhotosFromCategory(category);
+
+  if (!selectedPhotos.length) {
+    console.warn(
+      `Nenhuma foto encontrada para a categoria "${category}".`
+    );
+
+    return;
+  }
+
   activeGalleryCategory = category;
-  activeGalleryPhotos = getPhotosFromCategory(category);
+  activeGalleryPhotos = selectedPhotos;
   activeGalleryPhotoIndex = 0;
 
+  /*
+   * Antecipamos o carregamento das imagens da categoria.
+   * A função não bloqueia a abertura do visualizador.
+   */
+  preloadGalleryCategory(category, "high");
 
+  const slides = Array.from(
+    galleryTrack.querySelectorAll(
+      ".gallery-carousel__item"
+    )
+  );
 
-  galleryTrack.innerHTML = activeGalleryPhotos
-    .map((photo, index) => {
-      const loading = index === 0 ? "eager" : "lazy";
+  let firstVisibleImageFound = false;
 
-      return `
-        <figure class="gallery-carousel__item">
-          <img
-          src="${photo.src}"
-          srcset="
-            ${photo.src.replace('/upload/', '/upload/f_auto,q_auto,w_480/')} 480w,
-            ${photo.src.replace('/upload/', '/upload/f_auto,q_auto,w_768/')} 768w,
-            ${photo.src.replace('/upload/', '/upload/f_auto,q_auto,w_1024/')} 1024w,
-            ${photo.src.replace('/upload/', '/upload/f_auto,q_auto,w_1440/')} 1440w,
-            ${photo.src.replace('/upload/', '/upload/f_auto,q_auto,w_1920/')} 1920w,
-            ${photo.src.replace('/upload/', '/upload/f_auto,q_auto,w_2560/')} 2560w
-          "
-          sizes="
-            (max-width: 480px) 100vw,
-            (max-width: 768px) 100vw,
-            (max-width: 1024px) 100vw,
-            (max-width: 1440px) 100vw,
-            100vw
-          "
-          alt="${photo.alt}"
-          loading="${loading}"
-          decoding="async"
-          width="1200"
-          height="900"
-        />
+  slides.forEach((slide) => {
+    const isVisible =
+      slide.dataset.category === category;
 
-          <figcaption class="gallery-carousel__caption">
-            ${photo.albumTitle} · Foto ${photo.photoNumber}
-          </figcaption>
-        </figure>
-      `;
-    })
-    .join("");
+    const image = slide.querySelector("img");
+
+    // Oculta ou mostra o elemento que já existe.
+    slide.hidden = !isVisible;
+
+    if (!isVisible || !image) {
+      return;
+    }
+
+    if (!firstVisibleImageFound) {
+      /*
+       * A primeira imagem da categoria deve ser
+       * requisitada imediatamente.
+       */
+      image.loading = "eager";
+      image.fetchPriority = "high";
+
+      firstVisibleImageFound = true;
+    } else {
+      /*
+       * As demais podem continuar sendo carregadas
+       * sob demanda.
+       */
+      image.loading = "lazy";
+      image.fetchPriority = "auto";
+    }
+  });
 
   galleryGrid.hidden = true;
   galleryViewer.hidden = false;
 
   updateGalleryFilters(category);
 
+  /*
+   * Aguarda o navegador aplicar a visibilidade
+   * antes de reposicionar o carrossel.
+   */
   window.requestAnimationFrame(() => {
     galleryCarousel.scrollTo({
       left: 0,
@@ -1359,10 +1799,12 @@ function renderGalleryPhotos(category) {
 
 /* =========================================================
    CONTADOR E ESTADO DAS SETAS
-========================================================= */
+   ========================================================= */
 
 function updateGalleryCounter() {
-  if (!galleryCounter) return;
+  if (!galleryCounter) {
+    return;
+  }
 
   const totalPhotos = getTotalGalleryPhotos();
 
@@ -1371,16 +1813,24 @@ function updateGalleryCounter() {
     getPhotoLabel(totalPhotos);
 }
 
+
 function updateGalleryNavigationButtons() {
-  if (!previousGalleryButton || !nextGalleryButton) return;
+  if (
+    !previousGalleryButton ||
+    !nextGalleryButton
+  ) {
+    return;
+  }
 
   const totalPhotos = getTotalGalleryPhotos();
 
-  previousGalleryButton.disabled = activeGalleryPhotoIndex <= 0;
+  previousGalleryButton.disabled =
+    activeGalleryPhotoIndex <= 0;
 
   nextGalleryButton.disabled =
     activeGalleryPhotoIndex >= totalPhotos - 1;
 }
+
 
 function updateGalleryCarousel() {
   updateGalleryCounter();
@@ -1390,15 +1840,25 @@ function updateGalleryCarousel() {
 
 /* =========================================================
    MOVIMENTAÇÃO DO CARROSSEL
-========================================================= */
+   ========================================================= */
 
-function goToGalleryPhoto(index, behavior = "smooth") {
-  if (!galleryCarousel || !activeGalleryPhotos.length) return;
+function goToGalleryPhoto(
+  index,
+  behavior = "smooth"
+) {
+  if (
+    !galleryCarousel ||
+    !activeGalleryPhotos.length
+  ) {
+    return;
+  }
 
   const slides = getGallerySlides();
   const totalPhotos = slides.length;
 
-  if (!totalPhotos) return;
+  if (!totalPhotos) {
+    return;
+  }
 
   const normalizedIndex = Math.max(
     0,
@@ -1406,7 +1866,9 @@ function goToGalleryPhoto(index, behavior = "smooth") {
   );
 
   const targetSlide = slides[normalizedIndex];
-  const targetPosition = getSlideScrollPosition(targetSlide);
+
+  const targetPosition =
+    getSlideScrollPosition(targetSlide);
 
   activeGalleryPhotoIndex = normalizedIndex;
 
@@ -1418,23 +1880,41 @@ function goToGalleryPhoto(index, behavior = "smooth") {
   updateGalleryCarousel();
 }
 
-function showPreviousGalleryPhoto() {
-  if (activeGalleryPhotoIndex <= 0) return;
 
-  goToGalleryPhoto(activeGalleryPhotoIndex - 1);
+function showPreviousGalleryPhoto() {
+  if (activeGalleryPhotoIndex <= 0) {
+    return;
+  }
+
+  goToGalleryPhoto(
+    activeGalleryPhotoIndex - 1
+  );
 }
+
 
 function showNextGalleryPhoto() {
   const totalPhotos = getTotalGalleryPhotos();
 
-  if (activeGalleryPhotoIndex >= totalPhotos - 1) return;
+  if (
+    activeGalleryPhotoIndex >= totalPhotos - 1
+  ) {
+    return;
+  }
 
-  goToGalleryPhoto(activeGalleryPhotoIndex + 1);
+  goToGalleryPhoto(
+    activeGalleryPhotoIndex + 1
+  );
 }
 
 
+/* =========================================================
+   VOLTAR PARA A VISÃO GERAL
+   ========================================================= */
+
 function showGalleryOverview() {
-  if (!galleryGrid || !galleryViewer) return;
+  if (!galleryGrid || !galleryViewer) {
+    return;
+  }
 
   activeGalleryCategory = null;
   activeGalleryPhotos = [];
@@ -1445,13 +1925,37 @@ function showGalleryOverview() {
 
   updateGalleryFilters("all");
 }
+
+
+/* =========================================================
+   PRÉ-CARREGAMENTO AO APROXIMAR-SE DE UM FILTRO
+   ========================================================= */
+
+galleryFilters.forEach((button) => {
+  const preload = () => {
+    const category = button.dataset.filter;
+
+    if (category && category !== "all") {
+      preloadGalleryCategory(category);
+    }
+  };
+
+  // Desktop: o usuário aponta o mouse para a categoria.
+  button.addEventListener("pointerenter", preload);
+
+  // Teclado: o foco também antecipa o carregamento.
+  button.addEventListener("focus", preload);
+});
+
+
 /* =========================================================
    CLIQUES NOS FILTROS
-========================================================= */
+   ========================================================= */
 
 galleryFilters.forEach((button) => {
   button.addEventListener("click", () => {
-    const selectedCategory = button.dataset.filter;
+    const selectedCategory =
+      button.dataset.filter;
 
     if (selectedCategory === "all") {
       showGalleryOverview();
@@ -1464,19 +1968,43 @@ galleryFilters.forEach((button) => {
 
 
 /* =========================================================
+   PRÉ-CARREGAMENTO AO APROXIMAR-SE DE UM ÁLBUM
+   ========================================================= */
+
+galleryAlbumCards.forEach((albumCard) => {
+  const preload = () => {
+    const category = albumCard.dataset.category;
+
+    if (category) {
+      preloadGalleryCategory(category);
+    }
+  };
+
+  albumCard.addEventListener("pointerenter", preload);
+
+  albumCard.addEventListener("focus", preload);
+});
+
+
+/* =========================================================
    CLIQUES NOS CARDS / ÁLBUNS DA GRADE
-========================================================= */
+   ========================================================= */
 
 galleryAlbumCards.forEach((albumCard) => {
   albumCard.addEventListener("click", (event) => {
     event.preventDefault();
 
-    const selectedCategory = albumCard.dataset.category;
+    const selectedCategory =
+      albumCard.dataset.category;
 
     renderGalleryPhotos(selectedCategory);
 
+    /*
+     * Pequeno atraso para permitir que o visualizador
+     * seja exibido antes da rolagem.
+     */
     window.setTimeout(() => {
-      galleryViewer.scrollIntoView({
+      galleryViewer?.scrollIntoView({
         behavior: "smooth",
         block: "nearest"
       });
@@ -1487,7 +2015,7 @@ galleryAlbumCards.forEach((albumCard) => {
 
 /* =========================================================
    BOTÕES DO CARROSSEL
-========================================================= */
+   ========================================================= */
 
 if (previousGalleryButton) {
   previousGalleryButton.addEventListener(
@@ -1504,32 +2032,35 @@ if (nextGalleryButton) {
 }
 
 
-
-
 /* =========================================================
    ATUALIZAÇÃO AO ARRASTAR / ROLAR
-========================================================= */
+   ========================================================= */
 
 if (galleryCarousel) {
   galleryCarousel.addEventListener(
     "scroll",
     () => {
-      if (galleryScrollFrame !== null) return;
+      if (galleryScrollFrame !== null) {
+        return;
+      }
 
-      galleryScrollFrame = window.requestAnimationFrame(() => {
-        const totalPhotos = getTotalGalleryPhotos();
+      galleryScrollFrame =
+        window.requestAnimationFrame(() => {
+          const totalPhotos =
+            getTotalGalleryPhotos();
 
-        if (!totalPhotos) {
+          if (!totalPhotos) {
+            galleryScrollFrame = null;
+            return;
+          }
+
+          activeGalleryPhotoIndex =
+            getClosestGalleryPhotoIndex();
+
+          updateGalleryCarousel();
+
           galleryScrollFrame = null;
-          return;
-        }
-
-        activeGalleryPhotoIndex = getClosestGalleryPhotoIndex();
-
-        updateGalleryCarousel();
-
-        galleryScrollFrame = null;
-      });
+        });
     },
     { passive: true }
   );
@@ -1538,42 +2069,70 @@ if (galleryCarousel) {
 
 /* =========================================================
    NAVEGAÇÃO PELO TECLADO
-========================================================= */
+   ========================================================= */
 
 if (galleryCarousel) {
-  galleryCarousel.addEventListener("keydown", (event) => {
-    if (event.key === "ArrowLeft") {
-      event.preventDefault();
-      showPreviousGalleryPhoto();
+  galleryCarousel.addEventListener(
+    "keydown",
+    (event) => {
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        showPreviousGalleryPhoto();
+      }
+
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        showNextGalleryPhoto();
+      }
+
+      if (event.key === "Home") {
+        event.preventDefault();
+        goToGalleryPhoto(0);
+      }
+
+      if (event.key === "End") {
+        event.preventDefault();
+
+        const lastPhotoIndex =
+          getTotalGalleryPhotos() - 1;
+
+        goToGalleryPhoto(lastPhotoIndex);
+      }
     }
-
-    if (event.key === "ArrowRight") {
-      event.preventDefault();
-      showNextGalleryPhoto();
-    }
-
-    if (event.key === "Home") {
-      event.preventDefault();
-      goToGalleryPhoto(0);
-    }
-
-    if (event.key === "End") {
-      event.preventDefault();
-
-      const lastPhotoIndex = getTotalGalleryPhotos() - 1;
-
-      goToGalleryPhoto(lastPhotoIndex);
-    }
-  });
+  );
 }
 
 
 /* =========================================================
    AJUSTE APÓS REDIMENSIONAMENTO DA TELA
-========================================================= */
+   ========================================================= */
 
 window.addEventListener("resize", () => {
-  if (!activeGalleryPhotos.length) return;
+  if (!activeGalleryPhotos.length) {
+    return;
+  }
 
-  goToGalleryPhoto(activeGalleryPhotoIndex, "auto");
+  goToGalleryPhoto(
+    activeGalleryPhotoIndex,
+    "auto"
+  );
 });
+
+
+/* =========================================================
+   INICIALIZAÇÃO
+   ========================================================= */
+
+if (galleryTrack) {
+  /*
+   * Constrói os slides uma única vez.
+   * Inicialmente, todos ficam ocultos.
+   */
+  initializeGallerySlides();
+
+  /*
+   * Começa a preparar as imagens gradualmente,
+   * sem bloquear a interação inicial da página.
+   */
+  preloadGalleryInBackground();
+}
