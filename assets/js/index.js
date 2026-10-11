@@ -1088,7 +1088,12 @@ const galleryAlbums = {
   },
   pet: {
     title: "Área de Pets",
-    photos: []
+    photos: [
+      {
+        src: "https://res.cloudinary.com/djekybsww/image/upload/f_auto,q_auto,w_1200/v1791477222/a030bb2e-a3e1-4e2a-b898-02eb9718e03a.png",
+        alt: "Área de pets com espaço para brincar e descansar"
+      }
+    ]
   },
   lakes: {
     title: "Lagos",
@@ -1168,7 +1173,7 @@ const galleryAlbums = {
     ]
   },
 
-  "gamer-hall": {
+  "games-hall": {
     title: "Área Recreativa",
     photos: [
       {
